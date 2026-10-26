@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "profile": {
+    "name": "Echo Kirche",
+    "avatar": "/assets/images/logo.svg"
+  },
+  "socials": [
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/kircheimbrauhaus",
+      "label": "Instagram"
+    },
+    {
+      "platform": "whatsapp",
+      "url": "https://wa.me/4915123456789",
+      "label": "WhatsApp"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/KircheimBrauhaus",
+      "label": "YouTube"
+    },
+    {
+      "platform": "spotify",
+      "url": "https://open.spotify.com/show/5Wcf0t0f2tEZE16o0404I6?si=a614559835794cd0",
+      "label": "Spotify"
+    },
+    {
+      "platform": "email",
+      "url": "mailto:hello@kirche-echo.de",
+      "label": "E-Mail"
+    },
+    {
+      "platform": "website",
+      "url": "https://kirche-echo.de",
+      "label": "Website"
+    }
+  ],
+  "links": [
+    {
+      "id": "worship-services",
+      "type": "link",
+      "label": "Gottesdienste & Zeiten",
+      "url": "https://kirche-echo.de",
+      "icon": "church"
+    },
+    {
+      "id": "events-calendar",
+      "type": "link",
+      "label": "Veranstaltungen & Termine",
+      "url": "https://kirche-echo.de",
+      "icon": "calendar"
+    },
+    {
+      "id": "video-showreel",
+      "type": "video-link",
+      "provider": "youtube",
+      "label": "Predigt & Video-Gottesdienst",
+      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "image": {
+        "src": "/assets/images/video-thumbnail.svg",
+        "alt": "Video showreel poster preview",
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "id": "community-groups",
+      "type": "link",
+      "label": "Kleingruppen & Connect",
+      "url": "https://kirche-echo.de",
+      "icon": "users"
+    },
+    {
+      "id": "donate-support",
+      "type": "link",
+      "label": "Spenden & Unterstützen",
+      "url": "https://kirche-echo.de",
+      "icon": "heart"
+    },
+    {
+      "id": "location-directions",
+      "type": "link",
+      "label": "Standort: Schützenplatz 1, Gifhorn",
+      "url": "https://kirche-echo.de",
+      "icon": "location"
+    },
+    {
+      "id": "worship-music",
+      "type": "link",
+      "label": "Worship Playlist anhören",
+      "url": "https://open.spotify.com/show/5Wcf0t0f2tEZE16o0404I6?si=a614559835794cd0",
+      "icon": "music"
+    },
+    {
+      "id": "photo-exhibition",
+      "type": "image-horizontal",
+      "label": "Eindrücke aus dem Gemeindeleben",
+      "url": "https://kirche-echo.de",
+      "image": {
+        "src": "/assets/images/project-horizontal.svg",
+        "alt": "Eindrücke aus der Gemeinde",
+        "width": 1200,
+        "height": 630
+      }
+    },
+    {
+      "id": "podcast",
+      "type": "link",
+      "label": "Echo Kirche Podcast",
+      "url": "https://open.spotify.com/show/5Wcf0t0f2tEZE16o0404I6?si=a614559835794cd0",
+      "icon": "podcast"
+    },
+    {
+      "id": "newsletter",
+      "type": "link",
+      "label": "Gemeindebrief & Newsletter",
+      "url": "https://kirche-echo.de",
+      "icon": "newsletter"
+    },
+    {
+      "id": "website-link",
+      "type": "link",
+      "label": "Zur offiziellen Website (kirche-echo.de)",
+      "url": "https://kirche-echo.de"
+    }
+  ]
+}

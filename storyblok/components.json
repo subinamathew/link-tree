@@ -1,0 +1,393 @@
+{
+  "components": [
+    {
+      "name": "link_page",
+      "display_name": "Link Page",
+      "is_root": true,
+      "is_nestable": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "default_value": "Echo Kirche"
+        },
+        "theme": {
+          "type": "option",
+          "pos": 1,
+          "options": [
+            { "name": "White / Light", "value": "light" },
+            { "name": "Pale / Buttergelb", "value": "pale" },
+            { "name": "Soft", "value": "soft" },
+            { "name": "Dark", "value": "dark" },
+            { "name": "Teal", "value": "teal" },
+            { "name": "Lavender", "value": "lavender" }
+          ],
+          "default_value": "light"
+        },
+        "surface": {
+          "type": "option",
+          "pos": 2,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ],
+          "default_value": "default"
+        },
+        "profile": {
+          "type": "bloks",
+          "pos": 3,
+          "maximum": 1,
+          "restrict_components": true,
+          "component_whitelist": ["profile_header"]
+        },
+        "body": {
+          "type": "bloks",
+          "pos": 4,
+          "restrict_components": true,
+          "component_whitelist": [
+            "link_button",
+            "image_card_horizontal",
+            "image_card_vertical",
+            "video_link_card",
+            "section_heading"
+          ]
+        },
+        "footer": {
+          "type": "bloks",
+          "pos": 5,
+          "maximum": 1,
+          "restrict_components": true,
+          "component_whitelist": ["footer_legal"]
+        }
+      }
+    },
+    {
+      "name": "profile_header",
+      "display_name": "Profile Header",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Echo Kirche"
+        },
+        "bio": {
+          "type": "textarea",
+          "pos": 1
+        },
+        "avatar": {
+          "type": "asset",
+          "pos": 2,
+          "filetypes": ["images"]
+        }
+      }
+    },
+    {
+      "name": "link_button",
+      "display_name": "Link Button",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "url": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "icon": {
+          "type": "option",
+          "pos": 2,
+          "options": [
+            { "name": "None", "value": "" },
+            { "name": "Church", "value": "church" },
+            { "name": "Calendar", "value": "calendar" },
+            { "name": "Video", "value": "video" },
+            { "name": "Heart / Spenden", "value": "heart" },
+            { "name": "Users / Groups", "value": "users" },
+            { "name": "Location / Map", "value": "location" },
+            { "name": "Music / Playlist", "value": "music" },
+            { "name": "Newsletter", "value": "newsletter" },
+            { "name": "Podcast", "value": "podcast" },
+            { "name": "Envelope / Email", "value": "envelope" },
+            { "name": "Globe / Website", "value": "globe" },
+            { "name": "Echo Logo", "value": "logo" },
+            { "name": "Generic Link", "value": "link" }
+          ],
+          "default_value": ""
+        },
+        "show_on": {
+          "type": "options",
+          "pos": 3,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ]
+        },
+        "hide_on": {
+          "type": "options",
+          "pos": 4,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "image_card_horizontal",
+      "display_name": "Image Card (Horizontal 16:9)",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "url": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "image": {
+          "type": "asset",
+          "pos": 2,
+          "required": true,
+          "filetypes": ["images"]
+        },
+        "show_on": {
+          "type": "options",
+          "pos": 3,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ]
+        },
+        "hide_on": {
+          "type": "options",
+          "pos": 4,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "image_card_vertical",
+      "display_name": "Image Card (Vertical 3:4)",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "url": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "image": {
+          "type": "asset",
+          "pos": 2,
+          "required": true,
+          "filetypes": ["images"]
+        },
+        "show_on": {
+          "type": "options",
+          "pos": 3,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ]
+        },
+        "hide_on": {
+          "type": "options",
+          "pos": 4,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "video_link_card",
+      "display_name": "Video Link Card (Privacy-Enhanced)",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "url": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "provider": {
+          "type": "option",
+          "pos": 2,
+          "options": [
+            { "name": "YouTube", "value": "youtube" },
+            { "name": "Vimeo", "value": "vimeo" }
+          ],
+          "default_value": "youtube"
+        },
+        "image": {
+          "type": "asset",
+          "pos": 3,
+          "filetypes": ["images"]
+        },
+        "show_on": {
+          "type": "options",
+          "pos": 4,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ]
+        },
+        "hide_on": {
+          "type": "options",
+          "pos": 5,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "section_heading",
+      "display_name": "Section Heading",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        }
+      }
+    },
+    {
+      "name": "social_item",
+      "display_name": "Social Channel",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "platform": {
+          "type": "option",
+          "pos": 0,
+          "options": [
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "WhatsApp", "value": "whatsapp" },
+            { "name": "YouTube", "value": "youtube" },
+            { "name": "Spotify", "value": "spotify" },
+            { "name": "E-Mail", "value": "email" },
+            { "name": "Website (Echo Logo)", "value": "website" },
+            { "name": "Facebook", "value": "facebook" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" }
+          ],
+          "required": true
+        },
+        "url": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "label": {
+          "type": "text",
+          "pos": 2
+        }
+      }
+    },
+    {
+      "name": "footer_legal",
+      "display_name": "Footer & Legal",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "organization_name": {
+          "type": "text",
+          "pos": 0,
+          "default_value": "Echo Kirche"
+        },
+        "street": {
+          "type": "text",
+          "pos": 1,
+          "default_value": "Schützenplatz 1"
+        },
+        "city": {
+          "type": "text",
+          "pos": 2,
+          "default_value": "38518 Gifhorn"
+        },
+        "email": {
+          "type": "text",
+          "pos": 3,
+          "default_value": "hello@kirche-echo.de"
+        },
+        "impressum_url": {
+          "type": "text",
+          "pos": 4,
+          "default_value": "https://kirche-echo.de/impressum/"
+        },
+        "datenschutz_url": {
+          "type": "text",
+          "pos": 5,
+          "default_value": "https://kirche-echo.de/datenschutz/"
+        },
+        "copyright_year": {
+          "type": "text",
+          "pos": 6,
+          "default_value": "2026"
+        },
+        "socials": {
+          "type": "bloks",
+          "pos": 7,
+          "restrict_components": true,
+          "component_whitelist": ["social_item"]
+        }
+      }
+    }
+  ]
+}

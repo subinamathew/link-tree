@@ -1,0 +1,21 @@
+<header class="profile-header"{% if profile._editable %} {{ profile | storyblokEditable | safe }}{% endif %}>
+  {% set avatarSrc = profile.avatar.filename if (profile.avatar and profile.avatar.filename) else profile.avatar %}
+  {% if avatarSrc %}
+  <div class="profile-header__avatar-wrapper">
+    <img class="profile-header__avatar" src="{{ avatarSrc }}" alt="" width="96" height="96" loading="eager" />
+  </div>
+  {% endif %}
+  <h1 class="profile-header__name">
+    <span class="profile-header__name-logo" aria-hidden="true">
+      <svg class="fa-svg fa-echo-logo" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M69.244,48.67c0,-3.456 1.935,-6.46 4.757,-7.944l8.768,15.49c-1.367,0.905 -2.999,1.43 -4.739,1.43c-4.845,0 -8.768,-4.017 -8.768,-8.957l-0.018,-0.018Z"/>
+        <path d="M66.44,27.389l3.461,6.116c-5.254,2.932 -8.839,8.632 -8.839,15.164c0,9.536 7.579,17.281 16.932,17.281c3.23,0 6.265,-0.923 8.839,-2.533l3.461,6.116c-3.585,2.208 -7.792,3.474 -12.3,3.474c-13.169,0 -23.872,-10.894 -23.872,-24.339c0,-9.156 4.97,-17.137 12.3,-21.281l0.018,-0Z"/>
+        <path d="M87.933,92.57l-75.857,0c-6.869,0 -11.146,-7.582 -7.721,-13.626l37.928,-66.972c3.443,-6.062 12.016,-6.062 15.441,-0l4.721,8.342c-9.726,5.555 -16.311,16.178 -16.311,28.374c0,17.951 14.27,32.518 31.876,32.518c5.963,0 11.536,-1.665 16.311,-4.56l1.313,2.334c3.443,6.062 -0.852,13.626 -7.721,13.626l0.018,-0.036Z"/>
+      </svg>
+    </span>
+    <span class="profile-header__name-text">{{ profile.name }}</span>
+  </h1>
+  {% if profile.bio %}
+  <p class="profile-header__bio">{{ profile.bio }}</p>
+  {% endif %}
+</header>

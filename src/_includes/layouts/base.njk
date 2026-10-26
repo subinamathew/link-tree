@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="de" data-surface="{{ surface or (storyblok.content.surface if (storyblok and storyblok.content) else 'default') }}" data-theme="{{ (storyblok.content.theme if (storyblok and storyblok.content and storyblok.content.theme) else 'light') }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title or (storyblok.content.title if (storyblok and storyblok.content) else site.profile.name) }}</title>
+  <meta name="description" content="{{ description or site.profile.bio }}">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  {{ content | safe }}
+  <script src="/assets/js/video-embed.js" defer></script>
+  <script src="/assets/js/storyblok-bridge.js" defer></script>
+</body>
+</html>

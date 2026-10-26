@@ -1,0 +1,93 @@
+.image-card {
+  display: block;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-action-bg);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-focus-ring);
+    outline-offset: 3px;
+  }
+}
+
+.image-card__media {
+  position: relative;
+  inline-size: 100%;
+  background-color: var(--primitive-neutral-200);
+
+  img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.image-card--horizontal .image-card__media {
+  aspect-ratio: 16 / 9;
+}
+
+.image-card--vertical .image-card__media {
+  aspect-ratio: 3 / 4;
+}
+
+.image-card__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  word-break: break-word;
+}
+
+.image-card__title {
+  flex: 1 1 auto;
+}
+
+.image-card__arrow {
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  border-radius: var(--primitive-radius-pill, 9999px);
+  background-color: var(--color-action-bg, #08415c);
+  color: #ffffff;
+  box-shadow: var(--ek-shadow-xs, 0 1px 6px rgba(8, 65, 92, 0.06));
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  pointer-events: none;
+
+  svg,
+  .fa-svg {
+    inline-size: 1rem;
+    block-size: 1rem;
+    fill: currentColor;
+    transition: transform 0.15s ease;
+  }
+}
+
+.image-card:hover .image-card__arrow {
+  background-color: var(--color-action-bg-hover, #063146);
+  transform: scale(1.05);
+
+  svg,
+  .fa-svg {
+    transform: translateX(2px);
+  }
+}

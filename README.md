@@ -1,6 +1,6 @@
 # link-tree
 
-A static-first, configurable link-in-bio website designed for fast loading, strong privacy defaults, Storybook-driven UI development, and agent-assisted implementation.
+A static-first, configurable link-in-bio website designed for fast loading, strong privacy defaults, Storyblok headless CMS integration with visual editing, and agent-assisted implementation.
 
 > This repository is intentionally specification-first. The implementation contract lives in `AGENTS.md`, `SKILLS.md`, and `docs/`.
 
@@ -9,7 +9,7 @@ A static-first, configurable link-in-bio website designed for fast loading, stro
 - Render an ordered list of any number of link/content cards.
 - Support simple buttons, horizontal images, vertical/portrait images, and video-link cards.
 - Support multiple source/surface variants such as `default`, `instagram`, `tiktok`, `linkedin`, and future custom values.
-- Preview source/surface variants in Storybook.
+- Seamless headless content authoring and visual editing with Storyblok.
 - Keep the production site static-first with Sass and minimal or zero client-side JavaScript.
 - Deploy cleanly to Netlify or Cloudflare.
 - Keep visual design changeable through centralized design tokens.
@@ -20,9 +20,8 @@ A static-first, configurable link-in-bio website designed for fast loading, stro
 - Eleventy (11ty) for static generation.
 - Nunjucks templates for reusable HTML components.
 - Sass/SCSS compiled to one production stylesheet.
-- Storybook HTML + Vite for component development.
-- TypeScript only for build tooling, validation, and Storybook; avoid production runtime JavaScript unless a documented requirement justifies it.
-- JSON or YAML content/config validated against a schema.
+- Storyblok headless CMS (Content Delivery API & Visual Editor bridge).
+- JSON or YAML content/config validated against a schema with local fallback.
 
 See `docs/ARCHITECTURE.md` for the full implementation contract.
 

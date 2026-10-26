@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+---
+<div class="linktree-shell">
+  <main class="linktree-main legal-page">
+    <a class="legal-page__back" href="/" aria-label="Zurück zur Startseite">
+      &larr; Zurück zur Übersicht
+    </a>
+    <h1 class="legal-page__title">{{ title }}</h1>
+    {{ content | safe }}
+  </main>
+  {% include "components/FooterLegal.njk" %}
+</div>

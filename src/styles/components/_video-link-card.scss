@@ -1,0 +1,183 @@
+.video-link-card {
+  display: block;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:not(.video-link-card--playing):hover {
+    transform: translateY(-2px);
+    border-color: var(--color-action-bg);
+    box-shadow: 0 6px 16px rgba(8, 65, 92, 0.08);
+
+    .video-link-card__play-badge {
+      background-color: var(--color-action-bg);
+      color: var(--color-action-text);
+      transform: scale(1.1);
+    }
+  }
+
+  &:focus-within {
+    border-color: var(--color-action-bg);
+  }
+}
+
+.video-link-card__media {
+  position: relative;
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--primitive-neutral-900);
+
+  img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+}
+
+.video-link-card__play-btn {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:focus-visible .video-link-card__play-badge {
+    outline: 3px solid var(--color-focus-ring);
+    outline-offset: 3px;
+  }
+}
+
+.video-link-card__play-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 3.5rem;
+  block-size: 3.5rem;
+  border-radius: 50%;
+  background-color: rgba(8, 65, 92, 0.85);
+  color: #ffffff;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  pointer-events: none;
+
+  svg {
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    margin-inline-start: 0.2rem;
+  }
+}
+
+.video-link-card__arrow {
+  position: absolute;
+  right: var(--space-sm, 0.75rem);
+  bottom: var(--space-sm, 0.75rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  border-radius: var(--primitive-radius-pill, 9999px);
+  background-color: rgba(8, 65, 92, 0.88);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  pointer-events: none;
+  z-index: 2;
+
+  svg,
+  .fa-svg {
+    inline-size: 1rem;
+    block-size: 1rem;
+    fill: currentColor;
+    transition: transform 0.15s ease;
+  }
+}
+
+.video-link-card:not(.video-link-card--playing):hover .video-link-card__arrow {
+  background-color: var(--color-action-bg-hover, #063146);
+  transform: scale(1.05);
+
+  svg,
+  .fa-svg {
+    transform: translateX(2px);
+  }
+}
+
+.video-link-card__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
+  gap: var(--space-sm);
+}
+
+.video-link-card__title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  word-break: break-word;
+
+  &:hover {
+    color: var(--color-action-bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+.video-link-card__provider {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-block: 0.2rem;
+  padding-inline: 0.6rem;
+  border-radius: var(--primitive-radius-pill, 9999px);
+  background-color: var(--primitive-brand-pastel-yellow);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.video-link-card__consent-note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  padding-inline: var(--space-md);
+  padding-block: var(--space-xs) var(--space-sm);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  border-block-start: 1px solid var(--color-border);
+  background-color: rgba(8, 65, 92, 0.02);
+}
+
+.video-link-card__external-link {
+  font-size: 0.75rem;
+  color: var(--color-action-bg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+
+  &:hover {
+    color: var(--color-action-bg-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+}

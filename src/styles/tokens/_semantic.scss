@@ -1,13 +1,16 @@
 :root {
-  --color-page-bg: var(--primitive-neutral-50);
-  --color-text: var(--primitive-neutral-900);
-  --color-text-muted: var(--primitive-neutral-700);
-  --color-surface: var(--primitive-neutral-0);
-  --color-border: var(--primitive-neutral-200);
-  --color-action-bg: var(--primitive-brand-500);
-  --color-action-bg-hover: var(--primitive-brand-600);
-  --color-action-text: var(--primitive-neutral-0);
-  --color-focus-ring: var(--primitive-brand-500);
+  --color-page-bg: #FFFFFF;
+  --color-text: var(--ek-text, #1B1B1B);
+  --color-text-muted: var(--ek-mauve, #846B8A);
+  --color-surface: #FFFFFF;
+  --color-border: var(--ek-hairline, #E0E0E0);
+  --color-action-bg: var(--ek-ink, #08415C);
+  --color-action-bg-hover: #063146;
+  --color-action-text: #FFFFFF;
+  --color-focus-ring: var(--ek-ink, #08415C);
+
+  --font-heading: var(--primitive-font-heading);
+  --font-body: var(--primitive-font-body);
 
   --space-xs: var(--primitive-space-2);
   --space-sm: var(--primitive-space-3);
@@ -17,7 +20,107 @@
   --space-2xl: var(--primitive-space-7);
 
   --radius-control: var(--primitive-radius-md);
-  --radius-card: var(--primitive-radius-lg);
+  --radius-card: var(--primitive-radius-md);
 
   --content-max: 42rem;
+}
+
+// Background & Theme Modes
+[data-theme="light"],
+[data-theme="white"] {
+  --color-page-bg: #FFFFFF;
+  --color-text: var(--ek-text, #1B1B1B);
+  --color-text-muted: var(--ek-mauve, #846B8A);
+  --color-surface: #FFFFFF;
+  --color-border: var(--ek-hairline, #E0E0E0);
+  --color-action-bg: var(--ek-ink, #08415C);
+  --color-action-bg-hover: #063146;
+  --color-action-text: #FFFFFF;
+  --color-focus-ring: var(--ek-ink, #08415C);
+}
+
+[data-theme="pale"],
+[data-theme="warm"] {
+  --color-page-bg: var(--ek-warm, #FEFADC);
+  --color-text: var(--ek-ink, #08415C);
+  --color-text-muted: var(--ek-mauve, #846B8A);
+  --color-surface: #FFFFFF;
+  --color-border: #DDDAB0;
+  --color-action-bg: var(--ek-ink, #08415C);
+  --color-action-bg-hover: #063146;
+  --color-action-text: #FFFFFF;
+  --color-focus-ring: var(--ek-mauve, #846B8A);
+}
+
+[data-theme="soft"] {
+  --color-page-bg: var(--ek-page, #FAFAFA);
+  --color-text: var(--ek-text, #1B1B1B);
+  --color-text-muted: var(--ek-muted, #888888);
+  --color-surface: #FFFFFF;
+  --color-border: var(--ek-hairline, #E0E0E0);
+  --color-action-bg: var(--ek-ink, #08415C);
+  --color-action-bg-hover: #063146;
+  --color-action-text: #FFFFFF;
+  --color-focus-ring: var(--ek-ink, #08415C);
+}
+
+[data-theme="dark"] {
+  --color-page-bg: #000000;
+  --color-text: #FFFFFF;
+  --color-text-muted: #D0C4D4;
+  --color-surface: #14171A;
+  --color-border: #283036;
+  --color-action-bg: var(--ek-ink, #08415C);
+  --color-action-bg-hover: #0C5375;
+  --color-action-text: #FFFFFF;
+  --color-focus-ring: #FFFFFF;
+}
+
+[data-theme="teal"] {
+  --color-page-bg: var(--ek-ink, #08415C);
+  --color-text: var(--ek-warm, #FEFADC);
+  --color-text-muted: #FFFFFF;
+  --color-surface: #063146;
+  --color-border: #0D587C;
+  --color-action-bg: var(--ek-warm, #FEFADC);
+  --color-action-bg-hover: #FFFFFF;
+  --color-action-text: var(--ek-ink, #08415C);
+  --color-focus-ring: var(--ek-warm, #FEFADC);
+}
+
+[data-theme="lavender"] {
+  --color-page-bg: var(--ek-mauve, #846B8A);
+  --color-text: #FFFFFF;
+  --color-text-muted: var(--ek-warm, #FEFADC);
+  --color-surface: #735B78;
+  --color-border: #967D9C;
+  --color-action-bg: var(--ek-warm, #FEFADC);
+  --color-action-bg-hover: #FFFFFF;
+  --color-action-text: var(--ek-mauve, #846B8A);
+  --color-focus-ring: var(--ek-warm, #FEFADC);
+}
+
+// Surface Variants
+[data-surface="instagram"] {
+  --color-action-bg: #E1306C;
+  --color-action-bg-hover: #C13584;
+  --color-focus-ring: #E1306C;
+}
+
+[data-surface="tiktok"] {
+  --color-action-bg: #111111;
+  --color-action-bg-hover: #222222;
+  --color-focus-ring: #00F2FE;
+}
+
+[data-surface="linkedin"] {
+  --color-action-bg: #0A66C2;
+  --color-action-bg-hover: #004182;
+  --color-focus-ring: #0A66C2;
+}
+
+[data-surface="youtube"] {
+  --color-action-bg: #CC0000;
+  --color-action-bg-hover: #990000;
+  --color-focus-ring: #CC0000;
 }

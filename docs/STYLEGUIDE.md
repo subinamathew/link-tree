@@ -96,7 +96,7 @@ Agent workflow:
 3. Add primitive tokens only when necessary.
 4. Add semantic tokens only when no existing role is appropriate.
 5. Run contrast checks.
-6. Review all Storybook components.
+6. Review all Storyblok components and preview outputs.
 7. Do not hard-code the new palette directly into component files.
 8. Document intentional deviations.
 

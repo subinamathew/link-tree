@@ -1,0 +1,27 @@
+{
+  "name": "Echo Kirche",
+  "representative": "[BITTE AUSFÜLLEN: Vertreten durch (z.B. Vorstand/Pastor)]",
+  "address": {
+    "street": "Schützenplatz 1",
+    "city": "38518 Gifhorn",
+    "country": "Deutschland"
+  },
+  "contact": {
+    "email": "hello@kirche-echo.de",
+    "phone": "[BITTE AUSFÜLLEN: Telefonnummer (optional)]"
+  },
+  "urls": {
+    "impressum": "https://kirche-echo.de/impressum/",
+    "datenschutz": "https://kirche-echo.de/datenschutz/"
+  },
+  "registration": {
+    "court": "[BITTE AUSFÜLLEN: Registergericht (falls eingetragen)]",
+    "number": "[BITTE AUSFÜLLEN: Registernummer (falls eingetragen)]"
+  },
+  "vatId": "[BITTE AUSFÜLLEN: USt-IdNr. gem. § 27a UStG (falls vorhanden)]",
+  "responsibleForContent": "[BITTE AUSFÜLLEN: Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV]",
+  "hosting": {
+    "provider": "[BITTE AUSFÜLLEN: Hosting-Anbieter (z.B. Netlify / Cloudflare Pages)]",
+    "notes": "Die Bereitstellung dieser statischen Website erfolgt über einen externen Hosting-Dienstleister. Beim Abruf von Webseiten fallen technische Server-Logfiles an (z.B. IP-Adresse, Zugriffszeitpunkt, Browsertyp)."
+  }
+}

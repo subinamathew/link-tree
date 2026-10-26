@@ -2,7 +2,7 @@
 
 ## Summary
 
-The application is a statically generated link-in-bio site with a Storybook development environment. It is optimized for minimal runtime work, portability, privacy, and design-system maintainability.
+The application is a statically generated link-in-bio site with Storyblok headless CMS integration. It is optimized for minimal runtime work, portability, privacy, and design-system maintainability.
 
 ## Recommended stack
 
@@ -14,12 +14,12 @@ Why:
 - no client framework required;
 - data-driven collections/templates;
 - easy deployment to Netlify or Cloudflare;
-- Nunjucks templates map naturally to Storybook HTML stories.
+- Nunjucks templates render Storyblok blok components cleanly.
 
-### Component workshop
-Storybook with `@storybook/html-vite`
+### Headless CMS
+Storyblok (Content Delivery API & Visual Editor Bridge)
 
-Storybook is a development dependency only. Production must not load Storybook assets.
+Storyblok delivers headless content authoring. When previewed in the Storyblok Visual Editor, the live bridge enables interactive editing; production builds retain 0 KB runtime overhead.
 
 ### Styling
 Dart Sass/SCSS
@@ -27,22 +27,18 @@ Dart Sass/SCSS
 SCSS compiles into a single minified CSS artifact. CSS custom properties represent the semantic theme.
 
 ### Content
-YAML or JSON, validated before build.
-
-Suggested source files:
-- `src/data/site.yaml`
-- `src/data/links.yaml`
+Storyblok API with local JSON fallback (`src/_data/site.json`).
 
 ## Proposed repository layout
 
 ```
 .
-├── .storybook/
-│   ├── main.ts
-│   └── preview.ts
+├── storyblok/
+│   └── components.json
 ├── docs/
 ├── scripts/
-│   └── validate-content.mjs
+│   ├── validate-content.mjs
+│   └── verify-build.mjs
 ├── src/
 │   ├── _data/
 │   ├── _includes/
@@ -88,13 +84,13 @@ Default is `default`.
 
 A hosting platform may create multiple deploy contexts with different values, or separate routes may be generated from the same content if required later.
 
-Storybook uses a global `surface` toolbar parameter rather than an environment variable.
+Storyblok components provide surface options (`show_on`, `hide_on`) to target links to specific surfaces.
 
 ## Component rendering strategy
 
 Use pure rendering functions or Nunjucks macros for reusable markup.
 
-Avoid maintaining a separate Storybook-only copy of component HTML. If a shared render helper is needed, it may be consumed by both Eleventy and Storybook build tooling.
+Component markup maps directly to Storyblok blok components defined in `storyblok/components.json`.
 
 ## URL behavior
 
@@ -142,7 +138,7 @@ Begin with:
 - `Permissions-Policy` denying unused capabilities
 - a CSP compatible with zero inline scripts and local assets
 
-CSP must be tested against Storybook separately; development tooling should not weaken production headers.
+CSP allows Storyblok visual editor framing (`frame-ancestors 'self' https://app.storyblok.com`) and asset CDN while keeping production strict and privacy-first.
 
 ## Versioning
 

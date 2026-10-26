@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+---
+<div class="linktree-shell"{% if storyblok and storyblok.content %} {{ storyblok.content | storyblokEditable | safe }}{% endif %}>
+  {% if storyblok and storyblok.content and storyblok.content.profile and storyblok.content.profile[0] %}
+    {% set profile = storyblok.content.profile[0] %}
+  {% else %}
+    {% set profile = site.profile %}
+  {% endif %}
+  {% include "components/ProfileHeader.njk" %}
+
+  <main class="linktree-main" id="content">
+    {% set rawItems = storyblok.content.body if (storyblok and storyblok.content and storyblok.content.body) else site.links %}
+    {% set visibleLinks = rawItems | filterBySurface(surface) %}
+    <ul class="linktree-list" role="list">
+      {% for item in visibleLinks %}
+      <li class="linktree-item"{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
+        {% if item.component == "link_button" or item.type == "link" %}
+          {% include "components/LinkButton.njk" %}
+        {% elif item.component == "image_card_horizontal" or item.type == "image-horizontal" %}
+          {% include "components/ImageCardHorizontal.njk" %}
+        {% elif item.component == "image_card_vertical" or item.type == "image-vertical" %}
+          {% include "components/ImageCardVertical.njk" %}
+        {% elif item.component == "video_link_card" or item.type == "video-link" %}
+          {% include "components/VideoLinkCard.njk" %}
+        {% elif item.component == "section_heading" or item.type == "section-heading" %}
+          {% include "components/SectionHeading.njk" %}
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </main>
+
+  {% if storyblok and storyblok.content and storyblok.content.footer and storyblok.content.footer[0] %}
+    {% set footerBlok = storyblok.content.footer[0] %}
+  {% endif %}
+  {% include "components/FooterLegal.njk" %}
+</div>

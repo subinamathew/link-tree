@@ -17,12 +17,36 @@
         "avatar": { "$ref": "#/$defs/localAsset" }
       }
     },
+    "socials": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/socialLink" }
+    },
     "links": {
       "type": "array",
       "items": { "$ref": "#/$defs/item" }
     }
   },
   "$defs": {
+    "socialLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["platform", "url"],
+      "properties": {
+        "platform": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^(https://|mailto:|$)"
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 80
+        }
+      }
+    },
     "surface": {
       "type": "string",
       "pattern": "^(default|instagram|tiktok|linkedin|youtube|custom:[a-z0-9][a-z0-9-]{0,62})$"
@@ -86,6 +110,10 @@
           "type": "array",
           "uniqueItems": true,
           "items": { "$ref": "#/$defs/surface" }
+        },
+        "icon": {
+          "type": "string",
+          "maxLength": 60
         }
       }
     },
@@ -101,7 +129,8 @@
             "label": true,
             "url": true,
             "showOn": true,
-            "hideOn": true
+            "hideOn": true,
+            "icon": true
           }
         }
       ]

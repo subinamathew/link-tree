@@ -1,13 +1,80 @@
-:root {
-  --primitive-neutral-0: #ffffff;
-  --primitive-neutral-50: #f7f7f8;
-  --primitive-neutral-200: #dedfe3;
-  --primitive-neutral-700: #34363d;
-  --primitive-neutral-900: #141519;
+:root,
+.elementor-kit-172 {
+  // Echo Kirche Brand Identity
+  --echo-teal: #08415C;
+  --echo-purple: #846B8A;
+  --echo-cream: #FEFADC;
+  --echo-white: #FFFFFF;
+  --echo-text: #333333;
 
-  --primitive-brand-500: #4f46e5;
-  --primitive-brand-600: #4338ca;
+  // Elementor Global Colors (Kit 172)
+  --e-global-color-primary: #08415C;
+  --e-global-color-secondary: #846B8A;
+  --e-global-color-text: #263238;
+  --e-global-color-accent: #888888;
+  --e-global-color-9cb97e7: #FFFFFF;
+  --e-global-color-bd34d27: #FEFADC;
+  --e-global-color-8598472: #08415C;
+  --e-global-color-0957a0a: #FEFADC;
+  --e-global-color-57bd7a7: #846B8A;
+  --e-global-color-d6cea4e: #FFFFFF;
+  --e-global-color-2b1266b: #000000;
+  --e-global-color-c696dce: #FAFAFA;
+  --e-global-color-14ef391: #FEFADC;
+  --e-global-color-5a59fab: #E0E0E0;
+  --e-global-color-deb8b64: #F0F0F0;
+  --e-global-color-f0ad1f2: #FAFAFA;
+  --e-global-color-b068c6b: #FFFFFF;
+  --e-global-color-764183d: #F9FAFD;
+  --e-global-color-86b4fcd: #02010100;
+  --e-global-color-57c8da2: #000000CC;
+  --e-global-color-1b77cfb: #E2EBEE;
+  --e-global-color-aa0f449: #FFFFFF;
+  --e-global-color-c49b6b7: #B5B5B5;
+  --e-global-color-8e26f83: #F0F5F7;
+  --e-global-color-e95e4d9: #FFFFFF00;
+  --e-global-color-530f443: #E2EBEEE6;
+  --e-global-color-74ec61f: #1891CB;
+  --e-global-color-ccb2a4b: #FFFFFF;
+  --e-global-color-a1b8fcb: #333333;
+  --e-global-color-889f1f8: #F0F1F1;
 
+  // Echo Kirche Design System Tokens (ek-*)
+  --ek-ink: #08415C;
+  --ek-mauve: #846B8A;
+  --ek-warm: #FEFADC;
+  --ek-text: #1B1B1B;
+  --ek-muted: #888888;
+  --ek-hairline: #E0E0E0;
+  --ek-hairline-2: #F0F0F0;
+  --ek-page: #FAFAFA;
+  --ek-radius-input: 4px;
+  --ek-radius-card: 8px;
+  --ek-radius-pill: 999px;
+  --ek-shadow-xs: 0 1px 6px rgba(8, 65, 92, 0.06);
+  --ek-shadow-sm: 0 4px 20px rgba(8, 65, 92, 0.08);
+  --ek-shadow-md: 0 12px 40px rgba(8, 65, 92, 0.12);
+
+  // Primitive aliases for project consistency
+  --primitive-brand-teal: var(--ek-ink);
+  --primitive-brand-teal-hover: #063146;
+  --primitive-brand-lavender: var(--ek-mauve);
+  --primitive-brand-lavender-hover: #735b78;
+  --primitive-brand-pastel-yellow: var(--ek-warm);
+  --primitive-brand-pastel-yellow-border: #DDDAB0;
+
+  --primitive-neutral-0: #FFFFFF;
+  --primitive-neutral-50: var(--ek-warm);
+  --primitive-neutral-100: var(--ek-page);
+  --primitive-neutral-200: var(--ek-hairline-2);
+  --primitive-neutral-700: var(--ek-mauve);
+  --primitive-neutral-900: var(--ek-ink);
+
+  // Typography - Clash Display & Inter system stack
+  --primitive-font-heading: "clash display", "ClashDisplay-Var", "Clash Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --primitive-font-body: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  // Spacing Scale
   --primitive-space-1: 0.25rem;
   --primitive-space-2: 0.5rem;
   --primitive-space-3: 0.75rem;
@@ -16,7 +83,9 @@
   --primitive-space-6: 2rem;
   --primitive-space-7: 3rem;
 
-  --primitive-radius-sm: 0.5rem;
-  --primitive-radius-md: 0.875rem;
-  --primitive-radius-lg: 1.25rem;
+  // Radii
+  --primitive-radius-sm: var(--ek-radius-input);
+  --primitive-radius-md: var(--ek-radius-card);
+  --primitive-radius-lg: 1rem;
+  --primitive-radius-pill: var(--ek-radius-pill);
 }

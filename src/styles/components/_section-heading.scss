@@ -1,0 +1,11 @@
+.section-heading {
+  margin-block-start: var(--space-md);
+  margin-block-end: var(--space-xs);
+  padding-inline: var(--space-xs);
+  font-family: var(--font-heading);
+  font-size: 1.125rem; // H6: 18px
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

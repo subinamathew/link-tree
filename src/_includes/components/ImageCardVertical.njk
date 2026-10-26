@@ -1,0 +1,16 @@
+<a class="image-card image-card--vertical" href="{{ item.url }}" rel="noopener noreferrer"{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
+  {% set imgSrc = item.image.filename if (item.image and item.image.filename) else (item.image.src if item.image else '') %}
+  {% if imgSrc %}
+  <div class="image-card__media">
+    <img src="{{ imgSrc }}" alt="{{ item.image.alt or item.label }}" width="{{ item.image.width or 900 }}" height="{{ item.image.height or 1200 }}" loading="lazy" />
+  </div>
+  {% endif %}
+  <div class="image-card__content">
+    <span class="image-card__title">{{ item.label }}</span>
+    <span class="image-card__arrow" aria-hidden="true">
+      <svg class="fa-svg fa-arrow-right" viewBox="0 0 448 512" fill="currentColor" width="16" height="16">
+        <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+      </svg>
+    </span>
+  </div>
+</a>

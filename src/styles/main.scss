@@ -1,0 +1,82 @@
+// Tokens
+@use 'tokens/primitives';
+@use 'tokens/semantic';
+
+// Base
+@use 'base/reset';
+@use 'base/typography';
+
+// Components
+@use 'components/profile-header';
+@use 'components/link-button';
+@use 'components/image-card';
+@use 'components/video-link-card';
+@use 'components/section-heading';
+@use 'components/footer-legal';
+
+// Layout
+.linktree-shell {
+  max-inline-size: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.linktree-main {
+  flex: 1 0 auto;
+}
+
+.linktree-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Legal subpage styling
+.legal-page {
+  padding-block: var(--space-xl);
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-action-bg);
+    margin-block-end: var(--space-lg);
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+      border-radius: var(--primitive-radius-sm);
+    }
+  }
+
+  &__title {
+    margin-block-end: var(--space-lg);
+  }
+
+  &__section {
+    margin-block-end: var(--space-xl);
+
+    h2 {
+      margin-block-end: var(--space-sm);
+    }
+
+    p,
+    address {
+      font-style: normal;
+      margin-block-end: var(--space-sm);
+      line-height: 1.6;
+    }
+  }
+}

@@ -33,20 +33,20 @@ Deliverables:
 - validation script/tests;
 - migration notes for breaking changes.
 
-## Skill: storybook-component
+## Skill: storyblok-component
 
 Use whenever a UI component or visual variant changes.
 
 Rules:
-- Storybook HTML + Vite;
-- production markup must be the same markup rendered by the site templates where practical;
-- Storybook decorators may preview contexts but must not hide production coupling;
-- expose the global `surface` toolbar control.
+- Storyblok blok schemas in `storyblok/components.json`;
+- production markup must be the same markup rendered by the site templates;
+- components support Storyblok `_editable` attributes for visual click-to-edit selection;
+- expose surface and variant options in the blok schema.
 
 Deliverables:
-- stories covering core states;
-- accessibility checks;
-- responsive examples.
+- updated `storyblok/components.json`;
+- Nunjucks component template with Storyblok compatibility;
+- accessibility and responsive verification.
 
 ## Skill: sass-design-system
 
@@ -132,5 +132,5 @@ When handing work to another agent, include:
 - privacy impact;
 - new external domains;
 - new tokens;
-- Storybook stories added/changed;
+- Storyblok component schemas added/changed;
 - migration or deployment actions.

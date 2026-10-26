@@ -6,7 +6,8 @@ Expected third-party origins contacted on initial page load: **none**.
 
 | Origin | Purpose | Data sent | Consent status | Enabled |
 |---|---|---|---|---|
-| none | — | — | — | — |
+| none (on initial load) | — | — | — | — |
+| `https://www.youtube-nocookie.com` | Privacy-enhanced click-to-play video player | IP address, browser headers, playback telemetry upon play | Explicit 2-click consent on user play action | Enabled (user-initiated click only) |
 
 ## Rule
 

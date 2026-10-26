@@ -1,0 +1,58 @@
+---
+layout: layouts/legal.njk
+title: "Impressum"
+permalink: "/impressum/index.html"
+---
+<section class="legal-page__section">
+  <h2>Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)</h2>
+  <address>
+    <strong>{{ operator.name }}</strong><br>
+    {% if operator.representative %}
+    Vertreten durch: {{ operator.representative }}<br>
+    {% endif %}
+    {{ operator.address.street }}<br>
+    {{ operator.address.city }}<br>
+    {{ operator.address.country }}
+  </address>
+</section>
+
+<section class="legal-page__section">
+  <h2>Kontakt</h2>
+  <p>
+    E-Mail: <a href="mailto:{{ operator.contact.email }}">{{ operator.contact.email }}</a><br>
+    {% if operator.contact.phone %}
+    Telefon: {{ operator.contact.phone }}
+    {% endif %}
+  </p>
+</section>
+
+{% if operator.registration.court and operator.registration.number %}
+<section class="legal-page__section">
+  <h2>Registereintrag</h2>
+  <p>
+    Registergericht: {{ operator.registration.court }}<br>
+    Registernummer: {{ operator.registration.number }}
+  </p>
+</section>
+{% endif %}
+
+{% if operator.vatId %}
+<section class="legal-page__section">
+  <h2>Umsatzsteuer-ID</h2>
+  <p>
+    Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+    {{ operator.vatId }}
+  </p>
+</section>
+{% endif %}
+
+{% if operator.responsibleForContent %}
+<section class="legal-page__section">
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>
+    {{ operator.responsibleForContent }}<br>
+    {{ operator.address.street }}<br>
+    {{ operator.address.city }}
+  </p>
+</section>
+{% endif %}

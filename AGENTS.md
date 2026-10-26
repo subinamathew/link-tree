@@ -11,7 +11,7 @@ This file is authoritative for coding agents such as Antigravity, Codex, Claude 
 1. Prefer static HTML and CSS. Production JavaScript is opt-in, not the default.
 2. Use Eleventy (11ty) for static generation and Nunjucks for templates.
 3. Use Sass/SCSS for styling. Compile to a single minified production CSS file.
-4. Use Storybook with the HTML + Vite framework for component development.
+4. Use Storyblok as headless CMS with CLI component schemas and visual editing.
 5. Never introduce React/Vue/Svelte solely for component rendering.
 6. Content must be data-driven and validated against a schema before build.
 7. All visual constants must come from design tokens in `src/styles/tokens/`.
@@ -24,7 +24,7 @@ This file is authoritative for coding agents such as Antigravity, Codex, Claude 
 - Client-side JavaScript: target 0 KB.
 - If JS is necessary, each feature must justify itself in code comments and documentation.
 - No framework hydration.
-- No runtime dependency on Storybook.
+- No runtime third-party dependency in production (Storyblok Bridge loads only during visual editor preview).
 - No remote font request; use a system font stack unless explicitly approved.
 - Images must have explicit width/height and responsive `srcset`/sizes when applicable.
 - Prefer AVIF/WebP plus a safe fallback where the pipeline supports it.
@@ -46,7 +46,7 @@ Every component must:
 - work without JavaScript;
 - have focus-visible styles;
 - meet WCAG 2.2 AA contrast for normal usage;
-- have at least one Storybook story;
+- map to a Storyblok blok component schema;
 - expose only documented variants;
 - avoid inline styles except for narrowly justified CSS custom-property values.
 
@@ -61,9 +61,9 @@ The page can be rendered for a configurable source/surface. Initial values:
 - `youtube`
 - `custom:<slug>`
 
-A content item may define `showOn` and `hideOn`. If both are omitted, it is shown everywhere.
+A content item may define `showOn`/`show_on` and `hideOn`/`hide_on`. If both are omitted, it is shown everywhere.
 
-Storybook must expose a global toolbar control named `surface` so stories can preview the same component under different source contexts.
+Storyblok components expose surface options so content editors can target links to specific sources.
 
 Do not fork markup per surface unless there is a real semantic difference. Prefer design-token or class-level variation.
 
@@ -119,22 +119,19 @@ Do not claim that this repository guarantees legal compliance. Legal text must b
 - Respect `prefers-reduced-motion`.
 - Animations are optional and must not be required for comprehension.
 
-## Storybook requirements
+## Storyblok requirements
 
-- Framework: `@storybook/html-vite`.
-- Stories live beside components or in `src/stories/`.
-- Add global toolbar control `surface`.
-- Add backgrounds/theme controls only if they are token-driven.
-- Accessibility addon is required.
-- Viewport presets should include common narrow mobile widths.
-- Stories must cover empty/long labels, portrait/landscape media, disabled/hidden states where relevant.
+- Schema declaration: `storyblok/components.json`.
+- Bridge script: `src/assets/js/storyblok-bridge.js` (activates only in `?_storyblok=...` editor mode).
+- Offline fallback: Eleventy must build completely from local data when `STORYBLOK_TOKEN` is unset.
+- Content schema: `content.schema.json` validates local source files.
 
 ## Validation
 
 A pull request is not complete until:
 
 - production build succeeds;
-- Storybook build succeeds;
+- Storyblok schema is valid and synchronizable;
 - content schema validation succeeds;
 - Sass compiles without warnings;
 - HTML is semantically valid to the extent supported by CI tooling;
@@ -153,4 +150,4 @@ Before changing architecture:
 
 ## Definition of done
 
-The site can be built from a clean checkout, Storybook can render each component and surface variant, content can be changed without modifying templates, style changes can be made centrally through tokens, and the strict profile creates no avoidable consent-triggering third-party requests.
+The site can be built from a clean checkout, Storyblok components are defined with local fallback, content can be changed without modifying templates, style changes can be made centrally through tokens, and the strict profile creates no avoidable consent-triggering third-party requests.
