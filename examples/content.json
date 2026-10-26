@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "profile": {
+    "name": "Example Profile",
+    "bio": "A privacy-first link page."
+  },
+  "links": [
+    {
+      "id": "website",
+      "type": "link",
+      "label": "Website",
+      "url": "https://example.com"
+    },
+    {
+      "id": "instagram-project",
+      "type": "image-horizontal",
+      "label": "Featured project",
+      "url": "https://example.com/project",
+      "showOn": ["instagram"],
+      "image": {
+        "src": "/assets/images/project.webp",
+        "alt": "Featured project preview",
+        "width": 1200,
+        "height": 630
+      }
+    },
+    {
+      "id": "video",
+      "type": "video-link",
+      "provider": "youtube",
+      "label": "Watch the video",
+      "url": "https://www.youtube.com/",
+      "image": {
+        "src": "/assets/images/video.webp",
+        "alt": "Video preview",
+        "width": 1280,
+        "height": 720
+      }
+    }
+  ]
+}
