@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/link-tree/content.schema.json",
+  "title": "link-tree content",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "profile", "links"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "bio": { "type": "string", "maxLength": 500 },
+        "avatar": { "$ref": "#/$defs/localAsset" }
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/item" }
+    }
+  },
+  "$defs": {
+    "surface": {
+      "type": "string",
+      "pattern": "^(default|instagram|tiktok|linkedin|youtube|custom:[a-z0-9][a-z0-9-]{0,62})$"
+    },
+    "localAsset": {
+      "type": "string",
+      "pattern": "^/(?!/).+"
+    },
+    "safeUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["src", "alt", "width", "height"],
+      "properties": {
+        "src": { "$ref": "#/$defs/localAsset" },
+        "alt": { "type": "string", "maxLength": 500 },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "visibility": {
+      "properties": {
+        "showOn": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/surface" }
+        },
+        "hideOn": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/surface" }
+        }
+      }
+    },
+    "item": {
+      "oneOf": [
+        { "$ref": "#/$defs/link" },
+        { "$ref": "#/$defs/imageHorizontal" },
+        { "$ref": "#/$defs/imageVertical" },
+        { "$ref": "#/$defs/videoLink" }
+      ]
+    },
+    "base": {
+      "type": "object",
+      "required": ["id", "type", "label", "url"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+        "type": { "type": "string" },
+        "label": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "url": { "$ref": "#/$defs/safeUrl" },
+        "showOn": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/surface" }
+        },
+        "hideOn": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/surface" }
+        }
+      }
+    },
+    "link": {
+      "allOf": [
+        { "$ref": "#/$defs/base" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": true,
+            "type": { "const": "link" },
+            "label": true,
+            "url": true,
+            "showOn": true,
+            "hideOn": true
+          }
+        }
+      ]
+    },
+    "imageHorizontal": {
+      "allOf": [
+        { "$ref": "#/$defs/base" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["image"],
+          "properties": {
+            "id": true,
+            "type": { "const": "image-horizontal" },
+            "label": true,
+            "url": true,
+            "showOn": true,
+            "hideOn": true,
+            "image": { "$ref": "#/$defs/image" }
+          }
+        }
+      ]
+    },
+    "imageVertical": {
+      "allOf": [
+        { "$ref": "#/$defs/base" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["image"],
+          "properties": {
+            "id": true,
+            "type": { "const": "image-vertical" },
+            "label": true,
+            "url": true,
+            "showOn": true,
+            "hideOn": true,
+            "image": { "$ref": "#/$defs/image" }
+          }
+        }
+      ]
+    },
+    "videoLink": {
+      "allOf": [
+        { "$ref": "#/$defs/base" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["provider"],
+          "properties": {
+            "id": true,
+            "type": { "const": "video-link" },
+            "label": true,
+            "url": true,
+            "showOn": true,
+            "hideOn": true,
+            "provider": { "enum": ["youtube", "vimeo", "other"] },
+            "image": { "$ref": "#/$defs/image" }
+          }
+        }
+      ]
+    }
+  }
+}
