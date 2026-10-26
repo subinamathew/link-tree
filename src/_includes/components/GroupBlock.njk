@@ -1,0 +1,37 @@
+<section class="group-block{% if item.variant %} group-block--{{ item.variant }}{% else %} group-block--card{% endif %}"{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
+  {% if item.title %}
+  <header class="group-block__header">
+    <h2 class="group-block__title">{{ item.title }}</h2>
+    {% if item.description %}
+    <p class="group-block__description">{{ item.description }}</p>
+    {% endif %}
+  </header>
+  {% endif %}
+
+  {% set blockItems = item.items or item.body or item.links or [] %}
+  {% set visibleBlockItems = blockItems | filterBySurface(surface) %}
+  {% if visibleBlockItems.length > 0 %}
+  <ul class="group-block__list" role="list">
+    {% for subItem in visibleBlockItems %}
+    <li class="linktree-item"{% if subItem._editable %} {{ subItem | storyblokEditable | safe }}{% endif %}>
+      {% if subItem.component == "link_button" or subItem.type == "link" %}
+        {% set item = subItem %}
+        {% include "components/LinkButton.njk" %}
+      {% elif subItem.component == "image_card_horizontal" or subItem.type == "image-horizontal" %}
+        {% set item = subItem %}
+        {% include "components/ImageCardHorizontal.njk" %}
+      {% elif subItem.component == "image_card_vertical" or subItem.type == "image-vertical" %}
+        {% set item = subItem %}
+        {% include "components/ImageCardVertical.njk" %}
+      {% elif subItem.component == "video_link_card" or subItem.type == "video-link" %}
+        {% set item = subItem %}
+        {% include "components/VideoLinkCard.njk" %}
+      {% elif subItem.component == "section_heading" or subItem.type == "section-heading" %}
+        {% set item = subItem %}
+        {% include "components/SectionHeading.njk" %}
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>

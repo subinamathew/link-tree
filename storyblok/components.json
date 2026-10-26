@@ -48,6 +48,7 @@
           "pos": 4,
           "restrict_components": true,
           "component_whitelist": [
+            "group_block",
             "link_button",
             "image_card_horizontal",
             "image_card_vertical",
@@ -386,6 +387,67 @@
           "pos": 7,
           "restrict_components": true,
           "component_whitelist": ["social_item"]
+        }
+      }
+    },
+    {
+      "name": "group_block",
+      "display_name": "Block / Group (Container)",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "description": {
+          "type": "text",
+          "pos": 1
+        },
+        "variant": {
+          "type": "option",
+          "pos": 2,
+          "options": [
+            { "name": "Card Box (Default)", "value": "card" },
+            { "name": "Soft Background", "value": "soft" },
+            { "name": "Dashed Outline", "value": "outline" },
+            { "name": "Transparent / Seamless", "value": "transparent" }
+          ],
+          "default_value": "card"
+        },
+        "items": {
+          "type": "bloks",
+          "pos": 3,
+          "restrict_components": true,
+          "component_whitelist": [
+            "link_button",
+            "image_card_horizontal",
+            "image_card_vertical",
+            "video_link_card",
+            "section_heading"
+          ]
+        },
+        "show_on": {
+          "type": "options",
+          "pos": 4,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ]
+        },
+        "hide_on": {
+          "type": "options",
+          "pos": 5,
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Instagram", "value": "instagram" },
+            { "name": "TikTok", "value": "tiktok" },
+            { "name": "LinkedIn", "value": "linkedin" },
+            { "name": "YouTube", "value": "youtube" }
+          ]
         }
       }
     }

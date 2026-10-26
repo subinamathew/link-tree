@@ -51,6 +51,9 @@ export default function (eleventyConfig) {
       video_link_card: 'VideoLinkCard.njk',
       section_heading: 'SectionHeading.njk',
       footer_legal: 'FooterLegal.njk',
+      group_block: 'GroupBlock.njk',
+      content_block: 'GroupBlock.njk',
+      card_block: 'GroupBlock.njk',
     };
     return mapping[componentName] || `${componentName}.njk`;
   });

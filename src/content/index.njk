@@ -15,7 +15,9 @@ layout: layouts/base.njk
     <ul class="linktree-list" role="list">
       {% for item in visibleLinks %}
       <li class="linktree-item"{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
-        {% if item.component == "link_button" or item.type == "link" %}
+        {% if item.component == "group_block" or item.component == "content_block" or item.type == "group-block" %}
+          {% include "components/GroupBlock.njk" %}
+        {% elif item.component == "link_button" or item.type == "link" %}
           {% include "components/LinkButton.njk" %}
         {% elif item.component == "image_card_horizontal" or item.type == "image-horizontal" %}
           {% include "components/ImageCardHorizontal.njk" %}
