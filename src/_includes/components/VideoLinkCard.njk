@@ -1,4 +1,4 @@
-<div class="video-link-card" {% if item.provider == "youtube" %}data-video-embed="youtube" data-video-id="{{ item.url | youtubeId }}" data-video-title="{{ item.label }}"{% endif %}{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
+<div class="video-link-card" {% if item.provider == "youtube" %}data-video-embed="youtube" data-video-id="{{ item.url | youtubeId }}" data-video-title="{{ item.label }}"{% endif %}>
   {% set videoImgSrc = item.image.filename if (item.image and item.image.filename) else (item.image.src if item.image else '') %}
   {% if videoImgSrc %}
   <div class="video-link-card__media">

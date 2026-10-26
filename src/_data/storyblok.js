@@ -13,8 +13,33 @@ export default async function () {
 
   if (token) {
     try {
-      const url = `https://api.storyblok.com/v2/cdn/stories/${encodeURIComponent(slug)}?token=${encodeURIComponent(token)}&version=${encodeURIComponent(version)}`;
-      const res = await fetch(url, { headers: { Accept: 'application/json' } });
+      // 1. Initial fetch attempt for the slug
+      let url = `https://api.storyblok.com/v2/cdn/stories/${encodeURIComponent(slug)}?token=${encodeURIComponent(token)}&version=${encodeURIComponent(version)}`;
+      let res = await fetch(url, { headers: { Accept: 'application/json' } });
+
+      // 2. If 404 and version was published, retry with draft (story might be in draft mode)
+      if (res.status === 404 && version === 'published') {
+        url = `https://api.storyblok.com/v2/cdn/stories/${encodeURIComponent(slug)}?token=${encodeURIComponent(token)}&version=draft`;
+        res = await fetch(url, { headers: { Accept: 'application/json' } });
+      }
+
+      // 3. If still 404, list stories in space to find startpage or default story
+      if (res.status === 404) {
+        const listUrl = `https://api.storyblok.com/v2/cdn/stories?token=${encodeURIComponent(token)}&version=draft&per_page=5`;
+        const listRes = await fetch(listUrl, { headers: { Accept: 'application/json' } });
+        if (listRes.ok) {
+          const listJson = await listRes.json();
+          if (listJson && Array.isArray(listJson.stories) && listJson.stories.length > 0) {
+            const foundStory = listJson.stories.find((s) => s.is_startpage) || listJson.stories[0];
+            return {
+              source: 'storyblok-api',
+              story: foundStory,
+              content: foundStory.content,
+            };
+          }
+        }
+      }
+
       if (res.ok) {
         const json = await res.json();
         if (json && json.story) {

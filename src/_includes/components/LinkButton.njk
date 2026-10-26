@@ -1,4 +1,4 @@
-<a class="link-button{% if item.icon and item.icon != '' %} link-button--with-icon{% endif %}" href="{{ item.url }}" rel="noopener noreferrer"{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
+<a class="link-button{% if item.icon and item.icon != '' %} link-button--with-icon{% endif %}" href="{{ item.url }}" rel="noopener noreferrer">
   {% if item.icon and item.icon != '' %}
   <span class="link-button__icon" aria-hidden="true">
     {% if item.icon == "church" or item.icon == "fa-church" %}

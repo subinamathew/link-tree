@@ -1,4 +1,4 @@
-<a class="image-card image-card--vertical" href="{{ item.url }}" rel="noopener noreferrer"{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
+<a class="image-card image-card--vertical" href="{{ item.url }}" rel="noopener noreferrer">
   {% set imgSrc = item.image.filename if (item.image and item.image.filename) else (item.image.src if item.image else '') %}
   {% if imgSrc %}
   <div class="image-card__media">

@@ -27,7 +27,18 @@ export default function (eleventyConfig) {
   // Storyblok visual editor editable attribute
   eleventyConfig.addFilter('storyblokEditable', (blok) => {
     if (!blok || !blok._editable) return '';
-    return `data-blok='${blok._editable}'`;
+    try {
+      const clean = blok._editable
+        .replace(/^<!--#storyblok#?\s*/, '')
+        .replace(/-->$/, '')
+        .trim();
+      const options = JSON.parse(clean);
+      const cStr = JSON.stringify(options).replace(/"/g, '&quot;');
+      const uid = `${options.id}-${options.uid}`;
+      return `data-blok-c="${cStr}" data-blok-uid="${uid}"`;
+    } catch (e) {
+      return '';
+    }
   });
 
   // Convert Storyblok snake_case component names to Nunjucks Component names
