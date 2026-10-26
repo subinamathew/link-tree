@@ -52,13 +52,13 @@
     # - img-src: Self, inline data URIs, and Storyblok Asset CDN (https://a.storyblok.com)
     # - style-src: Self and inline styles for critical CSS and color tokens
     # - script-src: Self and Storyblok Bridge (https://app.storyblok.com) for visual editor
-    # - frame-src: Self and Privacy-Enhanced YouTube (https://www.youtube-nocookie.com)
+    # - frame-src: Self and YouTube embeds (https://www.youtube.com, https://www.youtube-nocookie.com)
     # - frame-ancestors: Allows iframe embedding only from self and Storyblok (https://app.storyblok.com)
     # - object-src 'none': Disallow Flash/Java plugins
     # - base-uri 'self': Prevent base tag injection
     # - form-action 'self': Prevent malicious form submissions
     # - upgrade-insecure-requests: Enforce HTTPS for all subresources
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://a.storyblok.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://app.storyblok.com; frame-src 'self' https://www.youtube-nocookie.com; frame-ancestors 'self' https://app.storyblok.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://a.storyblok.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://app.storyblok.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; frame-ancestors 'self' https://app.storyblok.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
     
     # MIME-sniffing protection
     X-Content-Type-Options = "nosniff"
@@ -67,7 +67,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     
     # Restrict sensitive browser APIs & trackers (no camera, microphone, geolocation, FLoC)
-    Permissions-Policy = "accelerometer=(), autoplay=(self \"https://www.youtube-nocookie.com\"), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(self \"https://www.youtube-nocookie.com\"), fullscreen=(self \"https://www.youtube-nocookie.com\"), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(self \"https://www.youtube-nocookie.com\"), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=(), browsing-topics=()"
+    Permissions-Policy = "accelerometer=(), autoplay=(self \"https://www.youtube.com\" \"https://www.youtube-nocookie.com\"), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(self \"https://www.youtube.com\" \"https://www.youtube-nocookie.com\"), fullscreen=(self \"https://www.youtube.com\" \"https://www.youtube-nocookie.com\"), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(self \"https://www.youtube.com\" \"https://www.youtube-nocookie.com\"), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=(), browsing-topics=()"
     
     # Enforce HTTPS with 1 year HSTS and preloading
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"

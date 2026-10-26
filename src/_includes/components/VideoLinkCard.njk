@@ -33,10 +33,4 @@
     <span class="video-link-card__provider">{{ item.provider }}</span>
     {% endif %}
   </div>
-  {% if item.provider == "youtube" %}
-  <div class="video-link-card__consent-note">
-    <span>Klick lädt Video von YouTube (youtube-nocookie.com).</span>
-    <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="video-link-card__external-link">Auf YouTube ansehen &nearr;</a>
-  </div>
-  {% endif %}
 </div>
