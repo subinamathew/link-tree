@@ -1,0 +1,23 @@
+:root {
+  --color-page-bg: var(--primitive-neutral-50);
+  --color-text: var(--primitive-neutral-900);
+  --color-text-muted: var(--primitive-neutral-700);
+  --color-surface: var(--primitive-neutral-0);
+  --color-border: var(--primitive-neutral-200);
+  --color-action-bg: var(--primitive-brand-500);
+  --color-action-bg-hover: var(--primitive-brand-600);
+  --color-action-text: var(--primitive-neutral-0);
+  --color-focus-ring: var(--primitive-brand-500);
+
+  --space-xs: var(--primitive-space-2);
+  --space-sm: var(--primitive-space-3);
+  --space-md: var(--primitive-space-4);
+  --space-lg: var(--primitive-space-5);
+  --space-xl: var(--primitive-space-6);
+  --space-2xl: var(--primitive-space-7);
+
+  --radius-control: var(--primitive-radius-md);
+  --radius-card: var(--primitive-radius-lg);
+
+  --content-max: 42rem;
+}
