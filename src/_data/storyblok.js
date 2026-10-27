@@ -1,6 +1,25 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+function youtubeVideoId(value = '') {
+  if (!value) return '';
+  const raw = String(value).trim();
+  if (/^[A-Za-z0-9_-]+$/.test(raw) && !raw.includes('/')) return raw;
+  try {
+    const url = new URL(raw);
+    if (url.hostname === 'youtu.be') return url.pathname.split('/').filter(Boolean)[0] || '';
+    if (url.hostname.endsWith('youtube.com')) {
+      if (url.searchParams.get('v')) return url.searchParams.get('v') || '';
+      const parts = url.pathname.split('/').filter(Boolean);
+      const embedIndex = parts.indexOf('embed');
+      if (embedIndex >= 0 && parts[embedIndex + 1]) return parts[embedIndex + 1];
+      const liveIndex = parts.indexOf('live');
+      if (liveIndex >= 0 && parts[liveIndex + 1]) return parts[liveIndex + 1];
+    }
+  } catch {}
+  return '';
+}
+
 /**
  * Storyblok data provider for Eleventy.
  * Fetches content from Storyblok Content Delivery API when STORYBLOK_TOKEN is provided.
@@ -112,8 +131,10 @@ export default async function () {
         _uid: item.id,
         component: 'video_link_card',
         label: item.label,
-        url: item.url,
+        url: item.provider === 'youtube' ? '' : item.url,
         provider: item.provider || 'youtube',
+        youtube_video_id: item.provider === 'youtube' ? youtubeVideoId(item.youtube_video_id || item.url) : '',
+        youtube_content_type: item.youtube_content_type || 'video',
         image: {
           filename: item.image?.src || '',
           alt: item.image?.alt || '',

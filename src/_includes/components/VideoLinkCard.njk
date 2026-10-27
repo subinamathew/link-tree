@@ -1,21 +1,19 @@
-<div class="video-link-card" {% if item.provider == "youtube" %}data-video-embed="youtube" data-video-id="{{ item.url | youtubeId }}" data-video-title="{{ item.label }}"{% endif %}>
+<div class="video-link-card"{% if item.provider == "youtube" and item.youtube_video_id %} data-video-embed="youtube" data-video-id="{{ item.youtube_video_id }}" data-video-title="{{ item.label }}"{% endif %}>
   {% set videoImgSrc = item.image.filename if (item.image and item.image.filename) else (item.image.src if item.image else '') %}
+  {% set youtubeUrl = "https://www.youtube.com/watch?v=" + item.youtube_video_id if (item.provider == "youtube" and item.youtube_video_id) else "" %}
+  {% set destinationUrl = youtubeUrl if youtubeUrl else item.url %}
   {% if videoImgSrc %}
   <div class="video-link-card__media">
     <img src="{{ videoImgSrc }}" alt="{{ item.image.alt or item.label }}" width="{{ item.image.width or 1280 }}" height="{{ item.image.height or 720 }}" loading="lazy" />
-    {% if item.provider == "youtube" %}
-    <button type="button" class="video-link-card__play-btn" aria-label="Video abspielen: {{ item.label }}">
+    {% if item.provider == "youtube" and item.youtube_video_id %}
+    <button type="button" class="video-link-card__play-btn" aria-label="{% if item.youtube_content_type == 'live' %}Livestream{% else %}Video{% endif %} abspielen: {{ item.label }}">
       <span class="video-link-card__play-badge" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
       </span>
     </button>
     {% else %}
     <span class="video-link-card__play-badge" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <polygon points="5 3 19 12 5 21 5 3"></polygon>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
     </span>
     {% endif %}
     <span class="video-link-card__arrow" aria-hidden="true">
@@ -26,10 +24,14 @@
   </div>
   {% endif %}
   <div class="video-link-card__content">
-    <a class="video-link-card__title" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
-      {{ item.label }}
-    </a>
-    {% if item.provider %}
+    {% if destinationUrl %}
+    <a class="video-link-card__title" href="{{ destinationUrl }}" target="_blank" rel="noopener noreferrer">{{ item.label }}</a>
+    {% else %}
+    <span class="video-link-card__title">{{ item.label }}</span>
+    {% endif %}
+    {% if item.provider == "youtube" %}
+    <span class="video-link-card__provider">YouTube{% if item.youtube_content_type == "live" %} Live{% endif %}</span>
+    {% elif item.provider %}
     <span class="video-link-card__provider">{{ item.provider }}</span>
     {% endif %}
   </div>

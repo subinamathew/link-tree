@@ -15,12 +15,30 @@
           "type": "option",
           "pos": 1,
           "options": [
-            { "name": "White / Light", "value": "light" },
-            { "name": "Pale / Buttergelb", "value": "pale" },
-            { "name": "Soft", "value": "soft" },
-            { "name": "Dark", "value": "dark" },
-            { "name": "Teal", "value": "teal" },
-            { "name": "Lavender", "value": "lavender" }
+            {
+              "name": "White / Light",
+              "value": "light"
+            },
+            {
+              "name": "Pale / Buttergelb",
+              "value": "pale"
+            },
+            {
+              "name": "Soft",
+              "value": "soft"
+            },
+            {
+              "name": "Dark",
+              "value": "dark"
+            },
+            {
+              "name": "Teal",
+              "value": "teal"
+            },
+            {
+              "name": "Lavender",
+              "value": "lavender"
+            }
           ],
           "default_value": "light"
         },
@@ -28,11 +46,26 @@
           "type": "option",
           "pos": 2,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ],
           "default_value": "default"
         },
@@ -41,7 +74,9 @@
           "pos": 3,
           "maximum": 1,
           "restrict_components": true,
-          "component_whitelist": ["profile_header"]
+          "component_whitelist": [
+            "profile_header"
+          ]
         },
         "body": {
           "type": "bloks",
@@ -61,7 +96,9 @@
           "pos": 5,
           "maximum": 1,
           "restrict_components": true,
-          "component_whitelist": ["footer_legal"]
+          "component_whitelist": [
+            "footer_legal"
+          ]
         }
       }
     },
@@ -84,7 +121,9 @@
         "avatar": {
           "type": "asset",
           "pos": 2,
-          "filetypes": ["images"]
+          "filetypes": [
+            "images"
+          ]
         }
       }
     },
@@ -108,20 +147,62 @@
           "type": "option",
           "pos": 2,
           "options": [
-            { "name": "None", "value": "" },
-            { "name": "Church", "value": "church" },
-            { "name": "Calendar", "value": "calendar" },
-            { "name": "Video", "value": "video" },
-            { "name": "Heart / Spenden", "value": "heart" },
-            { "name": "Users / Groups", "value": "users" },
-            { "name": "Location / Map", "value": "location" },
-            { "name": "Music / Playlist", "value": "music" },
-            { "name": "Newsletter", "value": "newsletter" },
-            { "name": "Podcast", "value": "podcast" },
-            { "name": "Envelope / Email", "value": "envelope" },
-            { "name": "Globe / Website", "value": "globe" },
-            { "name": "Echo Logo", "value": "logo" },
-            { "name": "Generic Link", "value": "link" }
+            {
+              "name": "None",
+              "value": ""
+            },
+            {
+              "name": "Church",
+              "value": "church"
+            },
+            {
+              "name": "Calendar",
+              "value": "calendar"
+            },
+            {
+              "name": "Video",
+              "value": "video"
+            },
+            {
+              "name": "Heart / Spenden",
+              "value": "heart"
+            },
+            {
+              "name": "Users / Groups",
+              "value": "users"
+            },
+            {
+              "name": "Location / Map",
+              "value": "location"
+            },
+            {
+              "name": "Music / Playlist",
+              "value": "music"
+            },
+            {
+              "name": "Newsletter",
+              "value": "newsletter"
+            },
+            {
+              "name": "Podcast",
+              "value": "podcast"
+            },
+            {
+              "name": "Envelope / Email",
+              "value": "envelope"
+            },
+            {
+              "name": "Globe / Website",
+              "value": "globe"
+            },
+            {
+              "name": "Echo Logo",
+              "value": "logo"
+            },
+            {
+              "name": "Generic Link",
+              "value": "link"
+            }
           ],
           "default_value": ""
         },
@@ -129,22 +210,52 @@
           "type": "options",
           "pos": 3,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ]
         },
         "hide_on": {
           "type": "options",
           "pos": 4,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ]
         }
       }
@@ -169,28 +280,60 @@
           "type": "asset",
           "pos": 2,
           "required": true,
-          "filetypes": ["images"]
+          "filetypes": [
+            "images"
+          ]
         },
         "show_on": {
           "type": "options",
           "pos": 3,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ]
         },
         "hide_on": {
           "type": "options",
           "pos": 4,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ]
         }
       }
@@ -215,35 +358,67 @@
           "type": "asset",
           "pos": 2,
           "required": true,
-          "filetypes": ["images"]
+          "filetypes": [
+            "images"
+          ]
         },
         "show_on": {
           "type": "options",
           "pos": 3,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ]
         },
         "hide_on": {
           "type": "options",
           "pos": 4,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ]
         }
       }
     },
     {
       "name": "video_link_card",
-      "display_name": "Video Link Card (Privacy-Enhanced)",
+      "display_name": "Video Card",
       "is_root": false,
       "is_nestable": true,
       "schema": {
@@ -252,45 +427,103 @@
           "pos": 0,
           "required": true
         },
-        "url": {
-          "type": "text",
-          "pos": 1,
-          "required": true
-        },
         "provider": {
           "type": "option",
-          "pos": 2,
+          "pos": 1,
           "options": [
-            { "name": "YouTube", "value": "youtube" },
-            { "name": "Vimeo", "value": "vimeo" }
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            },
+            {
+              "name": "Vimeo / Other",
+              "value": "other"
+            }
           ],
           "default_value": "youtube"
         },
+        "youtube_video_id": {
+          "type": "text",
+          "pos": 2,
+          "description": "For YouTube, enter only the Video ID, for example M7lc1UVf-VE. Works for normal, scheduled and live broadcasts."
+        },
+        "youtube_content_type": {
+          "type": "option",
+          "pos": 3,
+          "options": [
+            {
+              "name": "Normal video",
+              "value": "video"
+            },
+            {
+              "name": "Live / scheduled livestream",
+              "value": "live"
+            }
+          ],
+          "default_value": "video"
+        },
+        "url": {
+          "type": "text",
+          "pos": 4,
+          "description": "Only for non-YouTube providers. Leave empty when provider is YouTube."
+        },
         "image": {
           "type": "asset",
-          "pos": 3,
-          "filetypes": ["images"]
+          "pos": 5,
+          "filetypes": [
+            "images"
+          ]
         },
         "show_on": {
           "type": "options",
-          "pos": 4,
+          "pos": 6,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ]
         },
         "hide_on": {
           "type": "options",
-          "pos": 5,
+          "pos": 7,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ]
         }
       }
@@ -318,15 +551,42 @@
           "type": "option",
           "pos": 0,
           "options": [
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "WhatsApp", "value": "whatsapp" },
-            { "name": "YouTube", "value": "youtube" },
-            { "name": "Spotify", "value": "spotify" },
-            { "name": "E-Mail", "value": "email" },
-            { "name": "Website (Echo Logo)", "value": "website" },
-            { "name": "Facebook", "value": "facebook" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" }
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "WhatsApp",
+              "value": "whatsapp"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            },
+            {
+              "name": "Spotify",
+              "value": "spotify"
+            },
+            {
+              "name": "E-Mail",
+              "value": "email"
+            },
+            {
+              "name": "Website (Echo Logo)",
+              "value": "website"
+            },
+            {
+              "name": "Facebook",
+              "value": "facebook"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            }
           ],
           "required": true
         },
@@ -386,7 +646,9 @@
           "type": "bloks",
           "pos": 7,
           "restrict_components": true,
-          "component_whitelist": ["social_item"]
+          "component_whitelist": [
+            "social_item"
+          ]
         }
       }
     },
@@ -408,10 +670,22 @@
           "type": "option",
           "pos": 2,
           "options": [
-            { "name": "Card Box (Default)", "value": "card" },
-            { "name": "Soft Background", "value": "soft" },
-            { "name": "Dashed Outline", "value": "outline" },
-            { "name": "Transparent / Seamless", "value": "transparent" }
+            {
+              "name": "Card Box (Default)",
+              "value": "card"
+            },
+            {
+              "name": "Soft Background",
+              "value": "soft"
+            },
+            {
+              "name": "Dashed Outline",
+              "value": "outline"
+            },
+            {
+              "name": "Transparent / Seamless",
+              "value": "transparent"
+            }
           ],
           "default_value": "card"
         },
@@ -431,22 +705,52 @@
           "type": "options",
           "pos": 4,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ]
         },
         "hide_on": {
           "type": "options",
           "pos": 5,
           "options": [
-            { "name": "Default", "value": "default" },
-            { "name": "Instagram", "value": "instagram" },
-            { "name": "TikTok", "value": "tiktok" },
-            { "name": "LinkedIn", "value": "linkedin" },
-            { "name": "YouTube", "value": "youtube" }
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
           ]
         }
       }

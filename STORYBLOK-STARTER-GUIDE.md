@@ -465,29 +465,69 @@ Fields:
 - Text
 - required
 
-### url
-- Link
-- required
-
-Use the normal YouTube/Vimeo page URL.
-
 ### provider
 - Single Option
 - required
 
 Options:
-
 - YouTube → `youtube`
-- Vimeo → `vimeo`
+- Vimeo / Other → `other`
 
 Default: `youtube`
+
+### youtube_video_id
+- Text
+- used when Provider = YouTube
+- enter **only the YouTube Video ID**, not a full URL
+
+Example:
+
+If the YouTube address is:
+
+`https://www.youtube.com/watch?v=M7lc1UVf-VE`
+
+enter only:
+
+`M7lc1UVf-VE`
+
+The site creates the official watch URL and privacy-enhanced embed URL itself.
+
+### youtube_content_type
+- Single Option
+
+Options:
+- Normal video → `video`
+- Live / scheduled livestream → `live`
+
+This field is only a label/presentation hint. It does not change how YouTube identifies the content.
+
+### How YouTube Live works
+
+A scheduled or currently-live YouTube broadcast also has a normal YouTube **Video ID**.
+
+Use that Video ID in `youtube_video_id`.
+
+Do not enter:
+- a channel URL;
+- a channel `/live` URL;
+- iframe HTML;
+- an API key.
+
+The same video ID can be used before the scheduled broadcast, while it is live, and afterward if YouTube keeps the recording available.
+
+The website does not poll YouTube to determine whether a stream is currently live. This keeps the page faster and avoids extra API/data requests.
+
+### url
+- Text
+- only for Vimeo/Other
+- leave empty for YouTube
 
 ### image
 - Asset
 - images only
 - optional
 
-Prefer uploading a thumbnail to Storyblok instead of hotlinking a YouTube thumbnail.
+Prefer uploading the thumbnail to Storyblok instead of requesting a YouTube thumbnail on initial page load.
 
 ### show_on
 - Multi Option
@@ -497,13 +537,17 @@ Prefer uploading a thumbnail to Storyblok instead of hotlinking a YouTube thumbn
 - Multi Option
 - datasource: Surfaces
 
-Privacy rule:
+### YouTube privacy rule
 
-The published page must not load a YouTube/Vimeo iframe on first page load.
+The page must not load YouTube on initial page load.
 
-If an inline YouTube player is used, it must only be created after the visitor intentionally clicks play. The implementation should use YouTube's privacy-enhanced domain:
+Only after the visitor presses Play does the site create an iframe using YouTube's official Privacy-Enhanced Mode domain:
 
-`https://www.youtube-nocookie.com/embed/...`
+`https://www.youtube-nocookie.com/embed/VIDEO_ID`
+
+The normal title link opens the official YouTube watch page:
+
+`https://www.youtube.com/watch?v=VIDEO_ID`
 
 ---
 
@@ -733,14 +777,18 @@ In Body:
 6. set surface restrictions only if needed;
 7. save.
 
-## Step 22 — Add a video
+## Step 22 — Add a video or YouTube Live broadcast
 
 1. Add `Video Link Card`.
 2. Enter the title.
-3. paste the normal YouTube/Vimeo URL into the Link field.
-4. choose Provider.
-5. upload a thumbnail.
-6. save.
+3. Choose Provider.
+4. If Provider is YouTube, copy only the YouTube Video ID into `youtube_video_id`.
+5. Choose `Normal video` or `Live / scheduled livestream`.
+6. Leave `url` empty for YouTube.
+7. Upload a thumbnail if desired.
+8. Save.
+
+For YouTube Live, use the scheduled/live broadcast's Video ID. No API key or special live URL is needed.
 
 Do not paste iframe/embed HTML into Storyblok.
 

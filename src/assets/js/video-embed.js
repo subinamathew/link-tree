@@ -5,7 +5,7 @@
  * Rules satisfied:
  * - 0 KB framework hydration (pure vanilla DOM, 0 dependencies).
  * - Zero third-party requests and zero cookies on initial page load.
- * - Only injects the https://www.youtube.com iframe
+ * - Only injects the https://www.youtube-nocookie.com iframe
  *   after explicit, user-initiated click on the play button.
  */
 (() => {
@@ -24,7 +24,7 @@
         const media = card.querySelector('.video-link-card__media');
         if (media) {
           const iframe = document.createElement('iframe');
-          iframe.src = `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?autoplay=1`;
+          iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1`;
           iframe.title = title;
           iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
           iframe.setAttribute('allowfullscreen', 'true');

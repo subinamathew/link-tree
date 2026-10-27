@@ -76,7 +76,7 @@ Supported initial item types:
 - `image-vertical`
 - `video-link`
 
-`video-link` means a normal outbound link card by default. Do not create a YouTube iframe in the default privacy profile.
+`video-link` uses a privacy-first two-click model. YouTube content is identified by a Video ID. No YouTube request or iframe is allowed on initial load; after an explicit Play click, the player may use YouTube's official Privacy-Enhanced Mode domain (`youtube-nocookie.com`). Scheduled/live broadcasts use the same Video ID model.
 
 ## Privacy profiles
 
