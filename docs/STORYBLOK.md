@@ -29,7 +29,7 @@ Component schemas are declared in [`storyblok/components.json`](file:///Users/Sh
 | `link_button` | Nestable Blok | Label, URL, optional icon selection (`church`, `calendar`, `video`, `heart`, `users`, `location`, `music`, `newsletter`, `podcast`, `envelope`, `globe`, `logo`, `link`), and surface filtering rules (`show_on`, `hide_on`). |
 | `image_card_horizontal` | Nestable Blok | 16:9 featured horizontal media card with title, URL, image asset, and bottom-right arrow indicator badge (`->`). |
 | `image_card_vertical` | Nestable Blok | 3:4 portrait orientation media card with title, URL, image asset, and bottom-right arrow indicator badge (`->`). |
-| `video_link_card` | Nestable Blok | Privacy-compliant 2-click video card with title, URL, video provider (`youtube`, `vimeo`), local thumbnail asset, play button, and bottom-right arrow indicator badge (`->`). |
+| `video_link_card` | Nestable Blok | Privacy-first video card. YouTube uses a `youtube_video_id` plus optional `youtube_content_type` (`video` or `live`); non-YouTube providers may use `url`. The YouTube player loads only after an explicit click using YouTube Privacy-Enhanced Mode. |
 | `section_heading` | Nestable Blok | Section title divider. |
 | `footer_legal` | Nestable Blok | Organization contact info (`organization_name`, `street`, `city`, `email`), legal URLs (`impressum_url`, `datenschutz_url`), copyright year, and `socials` list. |
 | `social_item` | Nestable Blok | Circular social button with platform (`instagram`, `whatsapp`, `youtube`, `spotify`, `email`, `website`, `facebook`, `tiktok`, `linkedin`), URL, and label. |
@@ -72,3 +72,19 @@ STORYBLOK_TOKEN="your_access_token" STORYBLOK_VERSION="draft" npm run dev
 # Production static build
 npm run build
 ```
+
+
+## YouTube and YouTube Live
+
+For YouTube, editors enter only the YouTube Video ID in `youtube_video_id`.
+
+Example:
+
+- Full watch URL: `https://www.youtube.com/watch?v=M7lc1UVf-VE`
+- Storyblok value: `M7lc1UVf-VE`
+
+A scheduled or currently-live YouTube broadcast is handled the same way: use that broadcast's Video ID and set `youtube_content_type` to `live`.
+
+The site does not require the YouTube Data API and does not poll YouTube for live status. On initial page load it makes no YouTube player request. After the visitor presses Play, it embeds:
+
+`https://www.youtube-nocookie.com/embed/VIDEO_ID`
