@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate-content.mjs",
-    "test": "node --test test/**/*.test.mjs",
+    "test": "node --test",
     "build:sass": "sass src/styles/main.scss _site/css/main.css --style=compressed --no-source-map",
     "build:eleventy": "eleventy",
     "build": "npm run validate && npm run build:sass && npm run build:eleventy && npm run test && node scripts/verify-build.mjs",
