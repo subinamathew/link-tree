@@ -14,6 +14,33 @@ Diese Anleitung erklärt die Pflege der Link-in-Bio-Website mit Storyblok. Sie e
 - **Visual Editor**: The Storyblok live preview bridge only loads when an editor is actively previewing inside the Storyblok Visual Editor (`?_storyblok=...`). Visitors never load any Storyblok scripts.
 - **Brand Colors**: Theme colors remain consistent across all pages and surfaces. URL parameters filter content without altering brand colors.
 
+```mermaid
+flowchart TD
+  subgraph StoryblokSpace["Storyblok Space (Cloud CMS)"]
+    Stories["Stories (link_page content)"]
+    Bloks["Bloks & Schemas"]
+    VisualEditor["Visual Editor (Live Preview Iframe)"]
+  end
+
+  subgraph LocalCodebase["Local Repository & Build Pipeline"]
+    CompJSON["storyblok/components.json"]
+    FetchScript["src/_data/storyblok.js"]
+    Eleventy["Eleventy 11ty Engine"]
+    Bridge["storyblok-bridge.js (Preview Only)"]
+  end
+
+  subgraph DeployedSite["Production Deployment (Netlify)"]
+    StaticPages["Static HTML Pages (_site/)<br/>(/, /gf, /wob, /he, /ig)"]
+  end
+
+  CompJSON -->|npx storyblok push-components| Bloks
+  Bloks -->|npx storyblok pull-components| CompJSON
+  Stories -->|Storyblok API v2| FetchScript
+  FetchScript --> Eleventy
+  Eleventy --> StaticPages
+  VisualEditor <-->|Real-time PostMessage Bridge| Bridge
+```
+
 ---
 
 ## 2. Component Synchronization / Komponenten synchronisieren
