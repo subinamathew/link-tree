@@ -9,13 +9,15 @@
       "id": "website",
       "type": "link",
       "label": "Website",
-      "url": "https://example.com"
+      "url": "https://example.com",
+      "displayInDefault": true
     },
     {
       "id": "instagram-project",
       "type": "image-horizontal",
       "label": "Featured project",
       "url": "https://example.com/project",
+      "displayInDefault": false,
       "showOn": ["instagram"],
       "image": {
         "src": "/assets/images/project.webp",
@@ -29,13 +31,71 @@
       "type": "video-link",
       "provider": "youtube",
       "label": "Watch the video",
-      "url": "https://www.youtube.com/",
+      "url": "https://www.youtube.com/watch?v=NsZVWivPeHk",
+      "displayInDefault": true,
       "image": {
         "src": "/assets/images/video.webp",
         "alt": "Video preview",
         "width": 1280,
         "height": 720
       }
+    },
+    {
+      "id": "service-times",
+      "type": "dropdown-card",
+      "label": "Gottesdienste & Zeiten",
+      "layout": "columns",
+      "displayInDefault": true,
+      "description": "Feiere mit uns vor Ort oder online im Livestream:",
+      "locations": ["gifhorn", "wolfsburg", "helmstedt"],
+      "times": [
+        {
+          "title": "Gifhorn (10:00)",
+          "time": "10:00 Uhr",
+          "location": "BSK-Saal, Schützenplatz 3",
+          "details": "Unsere Gottesdienste finden jeden Sonntag um 10:00 und 12:00 Uhr nebenan im BSK-Saal, Schützenplatz 3 statt.",
+          "displayInDefault": true,
+          "hasKids": true,
+          "kidsLabel": "Echo Kids verfügbar",
+          "url": "https://example.com/gf",
+          "actionLabel": "Standort Gifhorn →"
+        },
+        {
+          "title": "Gifhorn (12:00)",
+          "time": "12:00 Uhr",
+          "location": "BSK-Saal, Schützenplatz 3",
+          "details": "Unsere Gottesdienste finden jeden Sonntag um 10:00 und 12:00 Uhr nebenan im BSK-Saal, Schützenplatz 3 statt.",
+          "displayInDefault": true,
+          "hasKids": true,
+          "kidsLabel": "Echo Kids verfügbar",
+          "url": "https://example.com/gf",
+          "actionLabel": "Standort Gifhorn →"
+        },
+        {
+          "title": "Wolfsburg",
+          "time": "11:00 Uhr",
+          "location": "Standort Wolfsburg",
+          "details": "Gottesdienst & Community",
+          "displayInDefault": true,
+          "hasKids": true,
+          "kidsLabel": "Echo Kids verfügbar",
+          "url": "https://example.com/wob",
+          "actionLabel": "Standort Wolfsburg →"
+        },
+        {
+          "title": "Helmstedt",
+          "time": "12:00 Uhr",
+          "location": "Standort Helmstedt",
+          "details": "Gottesdienst & Gemeinschaft",
+          "displayInDefault": true,
+          "hasKids": false,
+          "kidsLabel": "Echo Kids verfügbar",
+          "url": "https://example.com/he",
+          "actionLabel": "Standort Helmstedt →"
+        }
+      ],
+      "url": "https://example.com/times",
+      "actionLabel": "Alle Standorte & Livestream ansehen →"
     }
   ]
 }

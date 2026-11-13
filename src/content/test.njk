@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+permalink: "/test/index.html"
+eleventyComputed:
+  surface: "all"
+---
+<div class="linktree-shell"{% if storyblok and storyblok.content %} {{ storyblok.content | storyblokEditable | safe }}{% endif %}>
+  {% if storyblok and storyblok.content and storyblok.content.profile and storyblok.content.profile[0] %}
+    {% set profile = storyblok.content.profile[0] %}
+  {% else %}
+    {% set profile = site.profile %}
+  {% endif %}
+  {% include "components/ProfileHeader.njk" %}
+
+  <main class="linktree-main" id="content">
+    <nav class="surface-switcher" aria-label="Standort und Kanal Switcher">
+      <span class="surface-switcher__label">Switches / Filter testen:</span>
+      <div class="surface-switcher__group" role="toolbar" aria-label="Switch Optionen">
+        <a class="surface-switcher__btn" href="?surface=default" data-switch-value="default" role="button" aria-pressed="false">Alle</a>
+        <a class="surface-switcher__btn" href="?surface=gifhorn" data-switch-value="gifhorn" role="button" aria-pressed="false">Gifhorn (/gf, /gifhorn)</a>
+        <a class="surface-switcher__btn" href="?surface=wolfsburg" data-switch-value="wolfsburg" role="button" aria-pressed="false">Wolfsburg (/wob, /wolfsburg)</a>
+        <a class="surface-switcher__btn" href="?surface=helmstedt" data-switch-value="helmstedt" role="button" aria-pressed="false">Helmstedt (/he, /helmstedt)</a>
+        <a class="surface-switcher__btn" href="?surface=instagram" data-switch-value="instagram" role="button" aria-pressed="false">Instagram (/ig, /instagram)</a>
+      </div>
+      <div class="surface-switcher__status" aria-live="polite">
+        Aktiver Switch: <strong id="active-switch-badge">default</strong>
+      </div>
+    </nav>
+
+    {% set rawItems = storyblok.content.body if (storyblok and storyblok.content and storyblok.content.body) else site.links %}
+    {% set visibleLinks = rawItems | filterBySurface('all') %}
+    <ul class="linktree-list" role="list">
+      {% for item in visibleLinks %}
+      <li class="linktree-item"{% if item.showOn or item.show_on %} data-show-on="{{ (item.showOn or item.show_on) | join(',') }}"{% endif %}{% if item.hideOn or item.hide_on %} data-hide-on="{{ (item.hideOn or item.hide_on) | join(',') }}"{% endif %}{% if item.displayInDefault !== undefined %} data-display-in-default="{{ item.displayInDefault }}"{% elif item.display_in_default !== undefined %} data-display-in-default="{{ item.display_in_default }}"{% endif %}{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
+        {% if item.component == "group_block" or item.component == "content_block" or item.type == "group-block" %}
+          {% include "components/GroupBlock.njk" %}
+        {% elif item.component == "link_button" or item.type == "link" %}
+          {% include "components/LinkButton.njk" %}
+        {% elif item.component == "image_card_horizontal" or item.type == "image-horizontal" %}
+          {% include "components/ImageCardHorizontal.njk" %}
+        {% elif item.component == "image_card_vertical" or item.type == "image-vertical" %}
+          {% include "components/ImageCardVertical.njk" %}
+        {% elif item.component == "video_link_card" or item.type == "video-link" %}
+          {% include "components/VideoLinkCard.njk" %}
+        {% elif item.component == "section_heading" or item.type == "section-heading" %}
+          {% include "components/SectionHeading.njk" %}
+        {% elif item.component == "dropdown_card" or item.type == "dropdown-card" %}
+          {% include "components/DropdownCard.njk" %}
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </main>
+
+  {% if storyblok and storyblok.content and storyblok.content.footer and storyblok.content.footer[0] %}
+    {% set footerBlok = storyblok.content.footer[0] %}
+  {% endif %}
+  {% include "components/FooterLegal.njk" %}
+</div>

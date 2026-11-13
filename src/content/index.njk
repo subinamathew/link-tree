@@ -14,7 +14,7 @@ layout: layouts/base.njk
     {% set visibleLinks = rawItems | filterBySurface(surface) %}
     <ul class="linktree-list" role="list">
       {% for item in visibleLinks %}
-      <li class="linktree-item"{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
+      <li class="linktree-item"{% if item.showOn or item.show_on %} data-show-on="{{ (item.showOn or item.show_on) | join(',') }}"{% endif %}{% if item.hideOn or item.hide_on %} data-hide-on="{{ (item.hideOn or item.hide_on) | join(',') }}"{% endif %}{% if item.displayInDefault !== undefined %} data-display-in-default="{{ item.displayInDefault }}"{% elif item.display_in_default !== undefined %} data-display-in-default="{{ item.display_in_default }}"{% endif %}{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
         {% if item.component == "group_block" or item.component == "content_block" or item.type == "group-block" %}
           {% include "components/GroupBlock.njk" %}
         {% elif item.component == "link_button" or item.type == "link" %}
@@ -27,6 +27,8 @@ layout: layouts/base.njk
           {% include "components/VideoLinkCard.njk" %}
         {% elif item.component == "section_heading" or item.type == "section-heading" %}
           {% include "components/SectionHeading.njk" %}
+        {% elif item.component == "dropdown_card" or item.type == "dropdown-card" %}
+          {% include "components/DropdownCard.njk" %}
         {% endif %}
       </li>
       {% endfor %}

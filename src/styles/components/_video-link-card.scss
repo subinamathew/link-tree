@@ -18,6 +18,11 @@
     }
   }
 
+  &:not(.video-link-card--playing):active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
   &:focus-within {
     border-color: var(--color-action-bg);
   }

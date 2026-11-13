@@ -6,12 +6,25 @@ export default function (eleventyConfig) {
   // Filter items by active surface (supporting both local camelCase and Storyblok snake_case)
   eleventyConfig.addFilter('filterBySurface', (items, activeSurface) => {
     if (!Array.isArray(items)) return [];
+    if (activeSurface === 'all') return items;
     const surface = activeSurface || 'default';
     return items.filter(item => {
-      const showOn = item.showOn || item.show_on;
-      if (showOn && Array.isArray(showOn) && showOn.length > 0) {
-        if (!showOn.includes(surface)) {
-          return false;
+      if (surface === 'default') {
+        const inDefault = item.displayInDefault ?? item.display_in_default;
+        if (inDefault !== undefined) {
+          if (inDefault !== true) return false;
+        } else {
+          const showOn = item.showOn || item.show_on;
+          if (showOn && Array.isArray(showOn) && showOn.length > 0 && !showOn.includes('default')) {
+            return false;
+          }
+        }
+      } else {
+        const showOn = item.showOn || item.show_on;
+        if (showOn && Array.isArray(showOn) && showOn.length > 0) {
+          if (!showOn.includes(surface)) {
+            return false;
+          }
         }
       }
       const hideOn = item.hideOn || item.hide_on;
@@ -54,6 +67,7 @@ export default function (eleventyConfig) {
       group_block: 'GroupBlock.njk',
       content_block: 'GroupBlock.njk',
       card_block: 'GroupBlock.njk',
+      dropdown_card: 'DropdownCard.njk',
     };
     return mapping[componentName] || `${componentName}.njk`;
   });

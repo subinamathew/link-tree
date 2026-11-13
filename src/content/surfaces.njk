@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: surfaces
+  size: 1
+  alias: currentRoute
+permalink: "/{{ currentRoute.slug }}/index.html"
+eleventyComputed:
+  surface: "{{ currentRoute.surface }}"
+---
+<div class="linktree-shell"{% if storyblok and storyblok.content %} {{ storyblok.content | storyblokEditable | safe }}{% endif %}>
+  {% if storyblok and storyblok.content and storyblok.content.profile and storyblok.content.profile[0] %}
+    {% set profile = storyblok.content.profile[0] %}
+  {% else %}
+    {% set profile = site.profile %}
+  {% endif %}
+  {% include "components/ProfileHeader.njk" %}
+
+  <main class="linktree-main" id="content">
+    {% set rawItems = storyblok.content.body if (storyblok and storyblok.content and storyblok.content.body) else site.links %}
+    {% set visibleLinks = rawItems | filterBySurface(currentRoute.surface) %}
+    <ul class="linktree-list" role="list">
+      {% for item in visibleLinks %}
+      <li class="linktree-item"{% if item.showOn or item.show_on %} data-show-on="{{ (item.showOn or item.show_on) | join(',') }}"{% endif %}{% if item.hideOn or item.hide_on %} data-hide-on="{{ (item.hideOn or item.hide_on) | join(',') }}"{% endif %}{% if item.displayInDefault !== undefined %} data-display-in-default="{{ item.displayInDefault }}"{% elif item.display_in_default !== undefined %} data-display-in-default="{{ item.display_in_default }}"{% endif %}{% if item._editable %} {{ item | storyblokEditable | safe }}{% endif %}>
+        {% if item.component == "group_block" or item.component == "content_block" or item.type == "group-block" %}
+          {% include "components/GroupBlock.njk" %}
+        {% elif item.component == "link_button" or item.type == "link" %}
+          {% include "components/LinkButton.njk" %}
+        {% elif item.component == "image_card_horizontal" or item.type == "image-horizontal" %}
+          {% include "components/ImageCardHorizontal.njk" %}
+        {% elif item.component == "image_card_vertical" or item.type == "image-vertical" %}
+          {% include "components/ImageCardVertical.njk" %}
+        {% elif item.component == "video_link_card" or item.type == "video-link" %}
+          {% include "components/VideoLinkCard.njk" %}
+        {% elif item.component == "section_heading" or item.type == "section-heading" %}
+          {% include "components/SectionHeading.njk" %}
+        {% elif item.component == "dropdown_card" or item.type == "dropdown-card" %}
+          {% include "components/DropdownCard.njk" %}
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </main>
+
+  {% if storyblok and storyblok.content and storyblok.content.footer and storyblok.content.footer[0] %}
+    {% set footerBlok = storyblok.content.footer[0] %}
+  {% endif %}
+  {% include "components/FooterLegal.njk" %}
+</div>

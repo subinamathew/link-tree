@@ -44,7 +44,7 @@ function findFiles(dir, ext) {
 }
 
 const jsFiles = findFiles(siteDir, '.js');
-const allowedJsFiles = ['assets/js/video-embed.js', 'assets/js/storyblok-bridge.js'];
+const allowedJsFiles = ['assets/js/video-embed.js', 'assets/js/storyblok-bridge.js', 'assets/js/surface-switcher.js'];
 
 for (const file of jsFiles) {
   const relPath = path.relative(siteDir, file).replace(/\\/g, '/');
@@ -65,7 +65,7 @@ const htmlFiles = findFiles(siteDir, '.html');
 const forbiddenPatterns = [
   { pattern: /<iframe/i, message: 'Forbidden initial <iframe> embed found (violates zero initial third-party rule)' },
   { pattern: /fonts\.(googleapis|gstatic)\.com/i, message: 'Forbidden external font request found' },
-  { pattern: /<script(?![^>]*src=["']\/assets\/js\/(video-embed|storyblok-bridge)\.js["'])[^>]*>/i, message: 'Forbidden unauthorized <script> tag found' }
+  { pattern: /<script(?![^>]*src=["']\/assets\/js\/(video-embed|storyblok-bridge|surface-switcher)\.js["'])[^>]*>/i, message: 'Forbidden unauthorized <script> tag found' }
 ];
 
 for (const file of htmlFiles) {

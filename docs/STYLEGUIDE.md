@@ -80,12 +80,9 @@ Default to little or no motion. Any animation must:
 
 ## Surface styling
 
-Surface variants such as Instagram or LinkedIn may alter:
-- accent color;
-- selected emphasis;
-- small contextual labels.
-
-They should not create separate design systems unless explicitly required.
+Surface variants (e.g. Instagram, Wolfsburg, Gifhorn, Helmstedt) control content targeting and link filtering only.
+They must NOT alter brand colors, action buttons, or theme tokens.
+The canonical brand palette is preserved across all surfaces, routes, and URL parameters.
 
 ## Updating from a future uploaded styleguide
 

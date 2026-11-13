@@ -38,17 +38,109 @@
   ],
   "links": [
     {
-      "id": "worship-services",
+      "id": "switch-gifhorn",
       "type": "link",
+      "label": "Gifhorn",
+      "url": "https://kirche-echo.de/gifhorn",
+      "displayInDefault": false,
+      "showOn": ["gifhorn"],
+      "icon": "location"
+    },
+    {
+      "id": "switch-wolfsburg",
+      "type": "link",
+      "label": "Wolfsburg",
+      "url": "https://kirche-echo.de/wolfsburg",
+      "displayInDefault": false,
+      "showOn": ["wolfsburg"],
+      "icon": "location"
+    },
+    {
+      "id": "switch-helmstedt",
+      "type": "link",
+      "label": "Helmstedt",
+      "url": "https://kirche-echo.de/helmstedt",
+      "displayInDefault": false,
+      "showOn": ["helmstedt"],
+      "icon": "location"
+    },
+    {
+      "id": "switch-instagram",
+      "type": "link",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/kircheimbrauhaus",
+      "displayInDefault": false,
+      "showOn": ["instagram"],
+      "icon": "instagram"
+    },
+    {
+      "id": "worship-services",
+      "type": "dropdown-card",
       "label": "Gottesdienste & Zeiten",
+      "icon": "church",
+      "layout": "columns",
+      "displayInDefault": true,
+      "description": "Feiere mit uns vor Ort in Gifhorn, Wolfsburg und Helmstedt oder online im Livestream:",
+      "locations": ["gifhorn", "wolfsburg", "helmstedt"],
+      "times": [
+        {
+          "title": "Gifhorn (10:00)",
+          "time": "10:00 Uhr",
+          "location": "BSK-Saal, Schützenplatz 3",
+          "details": "Unsere Gottesdienste finden jeden Sonntag um 10:00 und 12:00 Uhr nebenan im BSK-Saal, Schützenplatz 3 statt.",
+          "displayInDefault": true,
+          "hasKids": true,
+          "kidsLabel": "Echo Kids verfügbar",
+          "url": "https://kirche-echo.de/gifhorn",
+          "actionLabel": "Standort Gifhorn →",
+          "showOn": ["default", "gifhorn"]
+        },
+        {
+          "title": "Gifhorn (12:00)",
+          "time": "12:00 Uhr",
+          "location": "BSK-Saal, Schützenplatz 3",
+          "details": "Unsere Gottesdienste finden jeden Sonntag um 10:00 und 12:00 Uhr nebenan im BSK-Saal, Schützenplatz 3 statt.",
+          "displayInDefault": true,
+          "hasKids": true,
+          "kidsLabel": "Echo Kids verfügbar",
+          "url": "https://kirche-echo.de/gifhorn",
+          "actionLabel": "Standort Gifhorn →",
+          "showOn": ["default", "gifhorn"]
+        },
+        {
+          "title": "Wolfsburg",
+          "time": "11:00 Uhr",
+          "location": "Standort Wolfsburg",
+          "details": "Gottesdienst & Community",
+          "displayInDefault": true,
+          "hasKids": true,
+          "kidsLabel": "Echo Kids verfügbar",
+          "url": "https://kirche-echo.de/wolfsburg",
+          "actionLabel": "Standort Wolfsburg →",
+          "showOn": ["default", "wolfsburg"]
+        },
+        {
+          "title": "Helmstedt",
+          "time": "12:00 Uhr",
+          "location": "Standort Helmstedt",
+          "details": "Gottesdienst & Gemeinschaft",
+          "displayInDefault": true,
+          "hasKids": false,
+          "kidsLabel": "Echo Kids verfügbar",
+          "url": "https://kirche-echo.de/helmstedt",
+          "actionLabel": "Standort Helmstedt →",
+          "showOn": ["default", "helmstedt"]
+        }
+      ],
       "url": "https://kirche-echo.de",
-      "icon": "church"
+      "actionLabel": "Alle Standorte & Livestream ansehen →"
     },
     {
       "id": "events-calendar",
       "type": "link",
       "label": "Veranstaltungen & Termine",
       "url": "https://kirche-echo.de",
+      "displayInDefault": true,
       "icon": "calendar"
     },
     {
@@ -56,7 +148,8 @@
       "type": "video-link",
       "provider": "youtube",
       "label": "Predigt & Video-Gottesdienst",
-      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "url": "https://www.youtube.com/watch?v=NsZVWivPeHk",
+      "displayInDefault": true,
       "image": {
         "src": "/assets/images/video-thumbnail.svg",
         "alt": "Video showreel poster preview",
@@ -69,6 +162,7 @@
       "type": "link",
       "label": "Kleingruppen & Connect",
       "url": "https://kirche-echo.de",
+      "displayInDefault": true,
       "icon": "users"
     },
     {
@@ -76,6 +170,7 @@
       "type": "link",
       "label": "Spenden & Unterstützen",
       "url": "https://kirche-echo.de",
+      "displayInDefault": true,
       "icon": "heart"
     },
     {
@@ -83,6 +178,7 @@
       "type": "link",
       "label": "Standort: Schützenplatz 1, Gifhorn",
       "url": "https://kirche-echo.de",
+      "displayInDefault": true,
       "icon": "location"
     },
     {
@@ -90,18 +186,63 @@
       "type": "link",
       "label": "Worship Playlist anhören",
       "url": "https://open.spotify.com/show/5Wcf0t0f2tEZE16o0404I6?si=a614559835794cd0",
+      "displayInDefault": true,
       "icon": "music"
     },
     {
-      "id": "photo-exhibition",
+      "id": "photo-default",
       "type": "image-horizontal",
       "label": "Eindrücke aus dem Gemeindeleben",
       "url": "https://kirche-echo.de",
+      "displayInDefault": true,
+      "showOn": ["default", "instagram"],
       "image": {
-        "src": "/assets/images/project-horizontal.svg",
-        "alt": "Eindrücke aus der Gemeinde",
-        "width": 1200,
-        "height": 630
+        "src": "/assets/images/es26-hero-1-1536x864.webp",
+        "alt": "Eindrücke aus dem Gemeindeleben",
+        "width": 1536,
+        "height": 864
+      }
+    },
+    {
+      "id": "photo-gifhorn",
+      "type": "image-horizontal",
+      "label": "Eindrücke aus dem Gemeindeleben",
+      "url": "https://kirche-echo.de/gifhorn",
+      "displayInDefault": false,
+      "showOn": ["gifhorn"],
+      "image": {
+        "src": "/assets/images/echo-home-gifhorn-1024x682.webp",
+        "alt": "Eindrücke aus dem Gemeindeleben Gifhorn",
+        "width": 1024,
+        "height": 682
+      }
+    },
+    {
+      "id": "photo-wolfsburg",
+      "type": "image-horizontal",
+      "label": "Eindrücke aus dem Gemeindeleben",
+      "url": "https://kirche-echo.de/wolfsburg",
+      "displayInDefault": false,
+      "showOn": ["wolfsburg"],
+      "image": {
+        "src": "/assets/images/echo-home-wolfsburg-1024x666.webp",
+        "alt": "Eindrücke aus dem Gemeindeleben Wolfsburg",
+        "width": 1024,
+        "height": 666
+      }
+    },
+    {
+      "id": "photo-helmstedt",
+      "type": "image-horizontal",
+      "label": "Eindrücke aus dem Gemeindeleben",
+      "url": "https://kirche-echo.de/helmstedt",
+      "displayInDefault": false,
+      "showOn": ["helmstedt"],
+      "image": {
+        "src": "/assets/images/echo-home-helmstedt-803x1024.webp",
+        "alt": "Eindrücke aus dem Gemeindeleben Helmstedt",
+        "width": 803,
+        "height": 1024
       }
     },
     {
@@ -109,6 +250,7 @@
       "type": "link",
       "label": "Echo Kirche Podcast",
       "url": "https://open.spotify.com/show/5Wcf0t0f2tEZE16o0404I6?si=a614559835794cd0",
+      "displayInDefault": true,
       "icon": "podcast"
     },
     {
@@ -116,13 +258,15 @@
       "type": "link",
       "label": "Gemeindebrief & Newsletter",
       "url": "https://kirche-echo.de",
+      "displayInDefault": true,
       "icon": "newsletter"
     },
     {
       "id": "website-link",
       "type": "link",
       "label": "Zur offiziellen Website (kirche-echo.de)",
-      "url": "https://kirche-echo.de"
+      "url": "https://kirche-echo.de",
+      "displayInDefault": true
     }
   ]
 }

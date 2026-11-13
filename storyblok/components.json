@@ -215,7 +215,19 @@
               "value": "default"
             },
             {
-              "name": "Instagram",
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
               "value": "instagram"
             },
             {
@@ -241,7 +253,19 @@
               "value": "default"
             },
             {
-              "name": "Instagram",
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
               "value": "instagram"
             },
             {
@@ -257,6 +281,12 @@
               "value": "youtube"
             }
           ]
+        },
+        "display_in_default": {
+          "type": "boolean",
+          "pos": 3,
+          "default_value": true,
+          "display_name": "Display on Default Page"
         }
       }
     },
@@ -293,7 +323,19 @@
               "value": "default"
             },
             {
-              "name": "Instagram",
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
               "value": "instagram"
             },
             {
@@ -319,7 +361,19 @@
               "value": "default"
             },
             {
-              "name": "Instagram",
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
               "value": "instagram"
             },
             {
@@ -335,6 +389,12 @@
               "value": "youtube"
             }
           ]
+        },
+        "display_in_default": {
+          "type": "boolean",
+          "pos": 3,
+          "default_value": true,
+          "display_name": "Display on Default Page"
         }
       }
     },
@@ -371,7 +431,19 @@
               "value": "default"
             },
             {
-              "name": "Instagram",
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
               "value": "instagram"
             },
             {
@@ -397,7 +469,19 @@
               "value": "default"
             },
             {
-              "name": "Instagram",
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
               "value": "instagram"
             },
             {
@@ -413,6 +497,12 @@
               "value": "youtube"
             }
           ]
+        },
+        "display_in_default": {
+          "type": "boolean",
+          "pos": 3,
+          "default_value": true,
+          "display_name": "Display on Default Page"
         }
       }
     },
@@ -483,7 +573,19 @@
               "value": "default"
             },
             {
-              "name": "Instagram",
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
               "value": "instagram"
             },
             {
@@ -509,7 +611,19 @@
               "value": "default"
             },
             {
-              "name": "Instagram",
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
               "value": "instagram"
             },
             {
@@ -525,6 +639,12 @@
               "value": "youtube"
             }
           ]
+        },
+        "display_in_default": {
+          "type": "boolean",
+          "pos": 6,
+          "default_value": true,
+          "display_name": "Display on Default Page"
         }
       }
     },
@@ -538,6 +658,12 @@
           "type": "text",
           "pos": 0,
           "required": true
+        },
+        "display_in_default": {
+          "type": "boolean",
+          "pos": 3,
+          "default_value": true,
+          "display_name": "Display on Default Page"
         }
       }
     },
@@ -698,7 +824,8 @@
             "image_card_horizontal",
             "image_card_vertical",
             "video_link_card",
-            "section_heading"
+            "section_heading",
+            "dropdown_card"
           ]
         },
         "show_on": {
@@ -710,7 +837,19 @@
               "value": "default"
             },
             {
-              "name": "Instagram",
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
               "value": "instagram"
             },
             {
@@ -736,7 +875,353 @@
               "value": "default"
             },
             {
-              "name": "Instagram",
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
+          ]
+        },
+        "display_in_default": {
+          "type": "boolean",
+          "pos": 4,
+          "default_value": true,
+          "display_name": "Display on Default Page"
+        }
+      }
+    },
+    {
+      "name": "dropdown_time_item",
+      "display_name": "Dropdown Service Time / Location Column",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "time": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "location": {
+          "type": "text",
+          "pos": 2
+        },
+        "details": {
+          "type": "textarea",
+          "pos": 3
+        },
+        "display_in_default": {
+          "type": "boolean",
+          "pos": 4,
+          "default_value": true,
+          "display_name": "Display on Default Page"
+        },
+        "has_kids": {
+          "type": "boolean",
+          "pos": 5,
+          "default_value": true,
+          "display_name": "Echo Kids Available"
+        },
+        "kids_label": {
+          "type": "text",
+          "pos": 6,
+          "default_value": "Echo Kids verfügbar"
+        },
+        "url": {
+          "type": "text",
+          "pos": 7
+        },
+        "action_label": {
+          "type": "text",
+          "pos": 8,
+          "default_value": "Standort & Infos →"
+        },
+        "show_on": {
+          "type": "options",
+          "pos": 9,
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
+          ]
+        },
+        "hide_on": {
+          "type": "options",
+          "pos": 10,
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "dropdown_card",
+      "display_name": "Dropdown Service Times Card",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Gottesdienste & Zeiten"
+        },
+        "icon": {
+          "type": "option",
+          "pos": 1,
+          "options": [
+            {
+              "name": "Church (Default)",
+              "value": "church"
+            },
+            {
+              "name": "Calendar",
+              "value": "calendar"
+            },
+            {
+              "name": "Video",
+              "value": "video"
+            },
+            {
+              "name": "Heart / Spenden",
+              "value": "heart"
+            },
+            {
+              "name": "Users / Groups",
+              "value": "users"
+            },
+            {
+              "name": "Location / Map",
+              "value": "location"
+            },
+            {
+              "name": "Music / Playlist",
+              "value": "music"
+            },
+            {
+              "name": "Generic Link",
+              "value": "link"
+            }
+          ],
+          "default_value": "church"
+        },
+        "description": {
+          "type": "text",
+          "pos": 2,
+          "default_value": "Feiere mit uns vor Ort in Gifhorn, Wolfsburg und Helmstedt oder online im Livestream:"
+        },
+        "display_in_default": {
+          "type": "boolean",
+          "pos": 3,
+          "default_value": true,
+          "display_name": "Display on Default Page"
+        },
+        "layout": {
+          "type": "option",
+          "pos": 4,
+          "options": [
+            {
+              "name": "3-Column Grid (Default)",
+              "value": "columns"
+            },
+            {
+              "name": "Vertical List",
+              "value": "list"
+            }
+          ],
+          "default_value": "columns"
+        },
+        "locations": {
+          "type": "options",
+          "pos": 5,
+          "options": [
+            {
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram / Online (ig)",
+              "value": "instagram"
+            }
+          ],
+          "default_value": [
+            "gifhorn",
+            "wolfsburg",
+            "helmstedt"
+          ]
+        },
+        "times": {
+          "type": "bloks",
+          "pos": 6,
+          "restrict_components": true,
+          "component_whitelist": [
+            "dropdown_time_item"
+          ]
+        },
+        "url": {
+          "type": "text",
+          "pos": 7,
+          "default_value": "https://kirche-echo.de"
+        },
+        "action_label": {
+          "type": "text",
+          "pos": 8,
+          "default_value": "Alle Standorte & Livestream ansehen →"
+        },
+        "show_on": {
+          "type": "options",
+          "pos": 9,
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
+              "value": "instagram"
+            },
+            {
+              "name": "TikTok",
+              "value": "tiktok"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "linkedin"
+            },
+            {
+              "name": "YouTube",
+              "value": "youtube"
+            }
+          ]
+        },
+        "hide_on": {
+          "type": "options",
+          "pos": 10,
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Gifhorn (gf)",
+              "value": "gifhorn"
+            },
+            {
+              "name": "Wolfsburg (wob)",
+              "value": "wolfsburg"
+            },
+            {
+              "name": "Helmstedt (he)",
+              "value": "helmstedt"
+            },
+            {
+              "name": "Instagram (ig)",
               "value": "instagram"
             },
             {

@@ -12,6 +12,11 @@
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   }
 
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
   &:focus-visible {
     outline: 3px solid var(--color-focus-ring);
     outline-offset: 3px;

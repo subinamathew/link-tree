@@ -56,7 +56,8 @@ Rules:
 - update tokens before scattering new values;
 - semantic tokens are preferred over literal colors in components;
 - new brand/styleguide inputs should primarily change token files, not component selectors;
-- keep components themeable through CSS custom properties.
+- keep components themeable through CSS custom properties;
+- strict adherence to brand colors: never change colors based on URL parameters, surfaces, or sublinks. Brand identity and action colors must remain unified and consistent across all pages and views.
 
 Deliverables:
 - token updates;
@@ -123,6 +124,35 @@ Deliverables:
 - `netlify.toml` and/or Cloudflare Pages instructions;
 - caching/header rules;
 - documented build command and output directory.
+
+## Skill: surface-routing-and-switching
+
+Use when configuring or modifying surfaces, localized city routes, channel targeting, or test preview environments.
+
+Rules:
+- Standard surface shortcuts and canonical routes:
+  - `<domain>/ig` and `<domain>/instagram` -> switch `instagram`
+  - `<domain>/wob` and `<domain>/wolfsburg` -> switch `wolfsburg`
+  - `<domain>/gf` and `<domain>/gifhorn` -> switch `gifhorn`
+  - `<domain>/he` and `<domain>/helmstedt` (including `/Helmstedt`) -> switch `helmstedt`
+- Default behavior:
+  - Surface-specific buttons and items (`showOn: ['gifhorn']`, `showOn: ['wolfsburg']`, etc.) must NOT be shown on the default route (`/`).
+  - Only general/universal links without `showOn` restrictions or with `default` are visible on `/`.
+- Test preview switcher:
+  - The interactive switcher toolbar (`.surface-switcher`) is ONLY rendered on `/test` (`/test/index.html`).
+  - Production landing routes (`/`, `/gf`, `/wob`, etc.) must remain uncluttered and show only the final tailored link list without the test toolbar.
+- Client-side & query parameter fallback:
+  - URL parameters (`?surface=<slug>` and `?switch=<slug>`) work dynamically across all pages via `surface-switcher.js`.
+- Brand color preservation:
+  - Surfaces, routes, and URL parameters strictly control content filtering/targeting only; they must NEVER change brand colors, button styles, or theme tokens. All surfaces, sublinks, and routes retain the canonical brand colors.
+
+Deliverables:
+- `src/_data/surfaces.js` route definitions;
+- `src/content/surfaces.njk` static multi-route pagination;
+- `src/content/test.njk` test preview route;
+- `src/assets/js/surface-switcher.js` path and query parameter handler;
+- `content.schema.json` surface pattern updates;
+- adherence to canonical brand tokens (no surface color overrides).
 
 ## Agent handoff checklist
 

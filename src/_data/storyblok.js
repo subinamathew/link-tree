@@ -83,6 +83,7 @@ export default async function () {
   const operator = JSON.parse(fs.readFileSync(operatorPath, 'utf8'));
 
   const bodyBloks = (site.links || []).map((item) => {
+    const displayInDef = item.displayInDefault ?? item.display_in_default ?? true;
     if (item.type === 'link') {
       return {
         _uid: item.id,
@@ -90,6 +91,7 @@ export default async function () {
         label: item.label,
         url: item.url,
         icon: item.icon || '',
+        display_in_default: displayInDef,
         show_on: item.showOn || [],
         hide_on: item.hideOn || [],
       };
@@ -100,6 +102,7 @@ export default async function () {
         component: 'image_card_horizontal',
         label: item.label,
         url: item.url,
+        display_in_default: displayInDef,
         image: {
           filename: item.image?.src || '',
           alt: item.image?.alt || '',
@@ -116,6 +119,7 @@ export default async function () {
         component: 'image_card_vertical',
         label: item.label,
         url: item.url,
+        display_in_default: displayInDef,
         image: {
           filename: item.image?.src || '',
           alt: item.image?.alt || '',
@@ -135,6 +139,7 @@ export default async function () {
         provider: item.provider || 'youtube',
         youtube_video_id: item.provider === 'youtube' ? youtubeVideoId(item.youtube_video_id || item.url) : '',
         youtube_content_type: item.youtube_content_type || 'video',
+        display_in_default: displayInDef,
         image: {
           filename: item.image?.src || '',
           alt: item.image?.alt || '',
@@ -145,10 +150,44 @@ export default async function () {
         hide_on: item.hideOn || [],
       };
     }
+    if (item.type === 'dropdown-card') {
+      const timesList = (item.columns || item.times || []).map((t, idx) => ({
+        _uid: `${item.id}-item-${idx}`,
+        component: 'dropdown_time_item',
+        title: t.title,
+        time: t.time,
+        location: t.location || '',
+        details: t.details || '',
+        display_in_default: t.displayInDefault ?? t.display_in_default ?? true,
+        has_kids: t.hasKids ?? t.has_kids ?? false,
+        kids_label: t.kidsLabel || t.kids_label || 'Echo Kids verfügbar',
+        url: t.url || '',
+        action_label: t.actionLabel || t.action_label || 'Standort & Infos →',
+        show_on: t.showOn || t.show_on || [],
+      }));
+
+      return {
+        _uid: item.id,
+        component: 'dropdown_card',
+        label: item.label,
+        url: item.url || '',
+        action_label: item.actionLabel || item.action_label || '',
+        icon: item.icon || '',
+        description: item.description || '',
+        display_in_default: displayInDef,
+        layout: item.layout || 'columns',
+        locations: item.locations || ['gifhorn', 'wolfsburg', 'helmstedt'],
+        times: timesList,
+        columns: timesList,
+        show_on: item.showOn || [],
+        hide_on: item.hideOn || [],
+      };
+    }
     return {
       _uid: item.id,
       component: 'section_heading',
       title: item.title || item.label || '',
+      display_in_default: displayInDef,
     };
   });
 

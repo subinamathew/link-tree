@@ -49,7 +49,7 @@
     },
     "surface": {
       "type": "string",
-      "pattern": "^(default|instagram|tiktok|linkedin|youtube|custom:[a-z0-9][a-z0-9-]{0,62})$"
+      "pattern": "^(default|instagram|tiktok|linkedin|youtube|gifhorn|wolfsburg|helmstedt|hildesheim|custom:[a-z0-9][a-z0-9-]{0,62})$"
     },
     "localAsset": {
       "type": "string",
@@ -90,7 +90,8 @@
         { "$ref": "#/$defs/link" },
         { "$ref": "#/$defs/imageHorizontal" },
         { "$ref": "#/$defs/imageVertical" },
-        { "$ref": "#/$defs/videoLink" }
+        { "$ref": "#/$defs/videoLink" },
+        { "$ref": "#/$defs/dropdownCard" }
       ]
     },
     "base": {
@@ -101,6 +102,7 @@
         "type": { "type": "string" },
         "label": { "type": "string", "minLength": 1, "maxLength": 160 },
         "url": { "$ref": "#/$defs/safeUrl" },
+        "displayInDefault": { "type": "boolean" },
         "showOn": {
           "type": "array",
           "uniqueItems": true,
@@ -128,6 +130,7 @@
             "type": { "const": "link" },
             "label": true,
             "url": true,
+            "displayInDefault": true,
             "showOn": true,
             "hideOn": true,
             "icon": true
@@ -147,6 +150,7 @@
             "type": { "const": "image-horizontal" },
             "label": true,
             "url": true,
+            "displayInDefault": true,
             "showOn": true,
             "hideOn": true,
             "image": { "$ref": "#/$defs/image" }
@@ -166,6 +170,7 @@
             "type": { "const": "image-vertical" },
             "label": true,
             "url": true,
+            "displayInDefault": true,
             "showOn": true,
             "hideOn": true,
             "image": { "$ref": "#/$defs/image" }
@@ -185,6 +190,7 @@
             "type": { "const": "video-link" },
             "label": true,
             "url": true,
+            "displayInDefault": true,
             "showOn": true,
             "hideOn": true,
             "provider": { "enum": ["youtube", "vimeo", "other"] },
@@ -192,6 +198,71 @@
           }
         }
       ]
+    },
+    "dropdownItem": {
+      "type": "object",
+      "required": ["title", "time"],
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string", "maxLength": 100 },
+        "time": { "type": "string", "maxLength": 100 },
+        "location": { "type": "string", "maxLength": 150 },
+        "details": { "type": "string", "maxLength": 300 },
+        "hasKids": { "type": "boolean" },
+        "kidsLabel": { "type": "string", "maxLength": 100 },
+        "displayInDefault": { "type": "boolean" },
+        "url": { "$ref": "#/$defs/safeUrl" },
+        "actionLabel": { "type": "string", "maxLength": 100 },
+        "showOn": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/surface" }
+        },
+        "hideOn": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/surface" }
+        }
+      }
+    },
+    "dropdownCard": {
+      "type": "object",
+      "required": ["id", "type", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+        "type": { "const": "dropdown-card" },
+        "label": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "layout": { "type": "string", "enum": ["columns", "list"] },
+        "displayInDefault": { "type": "boolean" },
+        "url": { "$ref": "#/$defs/safeUrl" },
+        "actionLabel": { "type": "string", "maxLength": 100 },
+        "icon": { "type": "string", "maxLength": 60 },
+        "description": { "type": "string", "maxLength": 300 },
+        "locations": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/surface" }
+        },
+        "times": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dropdownItem" }
+        },
+        "columns": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dropdownItem" }
+        },
+        "showOn": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/surface" }
+        },
+        "hideOn": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/surface" }
+        }
+      }
     }
   }
 }

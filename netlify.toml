@@ -111,6 +111,26 @@
 # Routing & Fallbacks
 # ------------------------------------------------------------------------------
 
+[[redirects]]
+  from = "/Helmstedt"
+  to = "/helmstedt/"
+  status = 301
+
+[[redirects]]
+  from = "/Wolfsburg"
+  to = "/wolfsburg/"
+  status = 301
+
+[[redirects]]
+  from = "/Gifhorn"
+  to = "/gifhorn/"
+  status = 301
+
+[[redirects]]
+  from = "/Instagram"
+  to = "/instagram/"
+  status = 301
+
 # Fallback for unmatched routes
 [[redirects]]
   from = "/*"

@@ -13,7 +13,7 @@
   {% if visibleBlockItems.length > 0 %}
   <ul class="group-block__list" role="list">
     {% for subItem in visibleBlockItems %}
-    <li class="linktree-item"{% if subItem._editable %} {{ subItem | storyblokEditable | safe }}{% endif %}>
+    <li class="linktree-item"{% if subItem.showOn or subItem.show_on %} data-show-on="{{ (subItem.showOn or subItem.show_on) | join(',') }}"{% endif %}{% if subItem.hideOn or subItem.hide_on %} data-hide-on="{{ (subItem.hideOn or subItem.hide_on) | join(',') }}"{% endif %}{% if subItem.displayInDefault !== undefined %} data-display-in-default="{{ subItem.displayInDefault }}"{% elif subItem.display_in_default !== undefined %} data-display-in-default="{{ subItem.display_in_default }}"{% endif %}{% if subItem._editable %} {{ subItem | storyblokEditable | safe }}{% endif %}>
       {% if subItem.component == "link_button" or subItem.type == "link" %}
         {% set item = subItem %}
         {% include "components/LinkButton.njk" %}
@@ -29,6 +29,9 @@
       {% elif subItem.component == "section_heading" or subItem.type == "section-heading" %}
         {% set item = subItem %}
         {% include "components/SectionHeading.njk" %}
+      {% elif subItem.component == "dropdown_card" or subItem.type == "dropdown-card" %}
+        {% set item = subItem %}
+        {% include "components/DropdownCard.njk" %}
       {% endif %}
     </li>
     {% endfor %}

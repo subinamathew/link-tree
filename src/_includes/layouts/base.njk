@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title or (storyblok.content.title if (storyblok and storyblok.content) else site.profile.name) }}</title>
   <meta name="description" content="{{ description or site.profile.bio }}">
+  <link rel="preload" href="/assets/fonts/ClashDisplay-Semibold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
   {{ content | safe }}
   <script src="/assets/js/video-embed.js" defer></script>
+  <script src="/assets/js/surface-switcher.js" defer></script>
   <script src="/assets/js/storyblok-bridge.js" defer></script>
 </body>
 </html>
