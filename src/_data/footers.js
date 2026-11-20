@@ -6,8 +6,8 @@ export default [
     venue: 'Brauhaus in Gifhorn',
     street: 'Schützenplatz 1',
     city: '38518 Gifhorn',
-    email: 'info@kirche-im-brauhaus.de',
-    mailto: 'mailto:info@kirche-im-brauhaus.de',
+    email: 'info@kirche-echo.de',
+    mailto: 'mailto:info@kirche-echo.de',
     contact_url: 'https://fcg-gifhorn.church.tools/publicgroup/1379',
     impressum_url: 'https://kirche-echo.de/impressum/',
     datenschutz_url: 'https://kirche-echo.de/datenschutz/',
@@ -37,7 +37,7 @@ export default [
       },
       {
         platform: 'email',
-        url: 'mailto:info@kirche-im-brauhaus.de',
+        url: 'mailto:info@kirche-echo.de',
         label: 'E-Mail',
       },
       {
@@ -52,10 +52,10 @@ export default [
     component: 'footer_legal',
     organization_name: 'Echo Wolfsburg',
     venue: 'Leonardo Hotel Wolfsburg City Center',
-    street: 'Leonardo Hotel Wolfsburg City Center<br>Rathausstraße 1',
+    street: 'Leonardo Hotel Wolfsburg City Center, Rathausstraße 1',
     city: '38440 Wolfsburg',
-    email: 'info@kirche-im-brauhaus.de',
-    mailto: 'mailto:info@kirche-im-brauhaus.de',
+    email: 'info@kirche-echo.de',
+    mailto: 'mailto:info@kirche-echo.de',
     contact_url: 'https://fcg-gifhorn.church.tools/publicgroup/1628',
     impressum_url: 'https://kirche-echo.de/impressum/',
     datenschutz_url: 'https://kirche-echo.de/datenschutz/',
@@ -74,13 +74,18 @@ export default [
         label: 'WhatsApp (Echo Wolfsburg)',
       },
       {
+        platform: 'youtube',
+        url: 'https://www.youtube.com/@KircheimBrauhaus',
+        label: 'YouTube (@KircheimBrauhaus)',
+      },
+      {
         platform: 'spotify',
         url: 'https://open.spotify.com/show/5Wcf0t0f2tEZE16o0404I6?si=a614559835794cd0',
         label: 'Spotify',
       },
       {
         platform: 'email',
-        url: 'mailto:info@kirche-im-brauhaus.de',
+        url: 'mailto:info@kirche-echo.de',
         label: 'E-Mail',
       },
       {
@@ -115,6 +120,11 @@ export default [
         platform: 'whatsapp',
         url: 'https://whatsapp.com/channel/0029VbDmLfb2P59tKORzGs21',
         label: 'WhatsApp (Echo Helmstedt)',
+      },
+      {
+        platform: 'youtube',
+        url: 'https://www.youtube.com/@KircheimBrauhaus',
+        label: 'YouTube (@KircheimBrauhaus)',
       },
       {
         platform: 'spotify',

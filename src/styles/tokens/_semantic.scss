@@ -30,6 +30,7 @@
 // Background & Theme Modes
 [data-theme="light"],
 [data-theme="white"] {
+  color-scheme: light;
   --color-page-bg: #FFFFFF;
   --color-text: var(--ek-text, #1B1B1B);
   --color-text-muted: var(--ek-mauve, #846B8A);
@@ -44,6 +45,7 @@
 
 [data-theme="pale"],
 [data-theme="warm"] {
+  color-scheme: light;
   --color-page-bg: var(--ek-warm, #FEFADC);
   --color-text: var(--ek-ink, #08415C);
   --color-text-muted: var(--ek-mauve, #846B8A);
@@ -57,6 +59,7 @@
 }
 
 [data-theme="soft"] {
+  color-scheme: light;
   --color-page-bg: var(--ek-page, #FAFAFA);
   --color-text: var(--ek-text, #1B1B1B);
   --color-text-muted: var(--ek-muted, #888888);
@@ -70,6 +73,7 @@
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   --color-page-bg: #000000;
   --color-text: #FFFFFF;
   --color-text-muted: #D0C4D4;
@@ -83,6 +87,7 @@
 }
 
 [data-theme="teal"] {
+  color-scheme: dark;
   --color-page-bg: var(--ek-ink, #08415C);
   --color-text: var(--ek-warm, #FEFADC);
   --color-text-muted: #FFFFFF;
@@ -96,6 +101,7 @@
 }
 
 [data-theme="lavender"] {
+  color-scheme: light;
   --color-page-bg: var(--ek-mauve, #846B8A);
   --color-text: #FFFFFF;
   --color-text-muted: var(--ek-warm, #FEFADC);

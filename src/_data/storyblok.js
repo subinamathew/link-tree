@@ -54,7 +54,6 @@ export default async function () {
             const foundStory = listJson.stories.find((s) => s.is_startpage) || listJson.stories[0];
             return {
               source: 'storyblok-api',
-              token: token || '',
               version: version,
               slug: slug,
               story: foundStory,
@@ -69,7 +68,6 @@ export default async function () {
         if (json && json.story) {
           return {
             source: 'storyblok-api',
-            token: token || '',
             version: version,
             slug: slug,
             story: json.story,
@@ -249,7 +247,6 @@ export default async function () {
 
   return {
     source: 'local-fallback',
-    token: token || '',
     version: version,
     slug: slug,
     story,

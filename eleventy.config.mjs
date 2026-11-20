@@ -42,7 +42,22 @@ export default function (eleventyConfig) {
   // Resolve Storyblok URLs (handles both plain strings and Storyblok multilink/link objects)
   eleventyConfig.addFilter('resolveUrl', resolveStoryblokUrl);
 
+  const VALID_THEMES = ['light', 'white', 'pale', 'warm', 'soft', 'dark', 'teal', 'lavender'];
+  const VALID_SURFACES = ['default', 'gifhorn', 'wolfsburg', 'helmstedt', 'instagram', 'all'];
 
+  // Sanitize CSS theme identifiers to prevent CSS/attribute injection
+  eleventyConfig.addFilter('sanitizeTheme', (val) => {
+    if (!val || typeof val !== 'string') return 'light';
+    const norm = val.toLowerCase().trim();
+    return VALID_THEMES.includes(norm) ? norm : 'light';
+  });
+
+  // Sanitize surface identifiers to prevent attribute injection
+  eleventyConfig.addFilter('sanitizeSurface', (val) => {
+    if (!val || typeof val !== 'string') return 'default';
+    const norm = val.toLowerCase().trim();
+    return VALID_SURFACES.includes(norm) ? norm : 'default';
+  });
 
   // Storyblok visual editor editable attribute
   eleventyConfig.addFilter('storyblokEditable', (blok) => {
@@ -53,9 +68,15 @@ export default function (eleventyConfig) {
         .replace(/-->$/, '')
         .trim();
       const options = JSON.parse(clean);
-      const cStr = JSON.stringify(options).replace(/"/g, '&quot;');
-      const uid = `${options.id}-${options.uid}`;
-      return `data-blok-c="${cStr}" data-blok-uid="${uid}"`;
+      if (!options || typeof options !== 'object') return '';
+      const cStr = JSON.stringify(options)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      const id = String(options.id || '').replace(/[^a-zA-Z0-9_-]/g, '');
+      const uid = String(options.uid || '').replace(/[^a-zA-Z0-9_-]/g, '');
+      return `data-blok-c="${cStr}" data-blok-uid="${id}-${uid}"`;
     } catch (e) {
       return '';
     }

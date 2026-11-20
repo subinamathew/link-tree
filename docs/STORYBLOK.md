@@ -421,7 +421,7 @@ Der Bereich ganz unten auf der Seite mit Impressum, Datenschutz und Social-Media
   - `organization_name` (Text): Offizieller Name (z. B. `Echo Gifhorn`, `Echo Wolfsburg`, `Echo Helmstedt`).
   - `street` (Text): Straße und Hausnummer (z. B. `Schützenplatz 1` oder für Helmstedt leer lassen).
   - `city` (Text): Postleitzahl und Ort (z. B. `38518 Gifhorn`, `38440 Wolfsburg`, `Helmstedt`).
-  - `email` (Text): Kontakt-E-Mail (z. B. `info@kirche-im-brauhaus.de`, `david.loewens@kib-gifhorn.de`).
+  - `email` (Text): Kontakt-E-Mail (z. B. `info@kirche-echo.de`, `david.loewens@kib-gifhorn.de`).
   - `mailto` (Text, Optional): E-Mail-Link mit Betreff (z. B. `mailto:david.loewens@kib-gifhorn.de?subject=Kontakt%20EchoHelmstedt`).
   - `impressum_url` (Text): Link zum Impressum (z. B. `https://kirche-echo.de/impressum/`).
   - `datenschutz_url` (Text): Link zur Datenschutzerklärung (z. B. `https://kirche-echo.de/datenschutz/`).

@@ -2,6 +2,8 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { runInNewContext } from 'node:vm';
+import { resolveStoryblokUrl, normalizeStoryblokLinks } from '../src/utils/storyblok-url.js';
 
 const siteDir = path.resolve('_site');
 
@@ -150,11 +152,278 @@ describe('Component Markup & Accessibility Contracts', () => {
     assert.equal(normalized.footer[0].impressum_url, 'https://kirche-echo.de/impressum/', 'normalizeStoryblokLinks must resolve nested footer impressum_url');
   });
 
-  test('LazyLoader renders Echo logo and accessible loading container', () => {
-    assert.match(indexHtml, /class="lazy-loader"/, 'Base layout must render lazy-loader');
-    assert.match(indexHtml, /id="page-loader"/, 'LazyLoader must have page-loader id');
-    assert.match(indexHtml, /class="lazy-loader__logo"/, 'LazyLoader logo wrapper must exist');
-    assert.match(indexHtml, /class="fa-svg fa-echo-logo"/, 'LazyLoader must contain Echo logo SVG');
+  test('Pages render favicon.webp in head and do not render lazy-loader overlay', () => {
+    assert.match(indexHtml, /<link\s+rel="icon"\s+type="image\/webp"\s+href="\/assets\/images\/favicon\.webp">/, 'HTML must render favicon.webp in head');
+    assert.doesNotMatch(indexHtml, /id="page-loader"/, 'Regular pages must not render page loader overlay');
+    assert.doesNotMatch(indexHtml, /class="lazy-loader"/, 'Regular pages must not contain lazy-loader markup');
+  });
+
+  test('Storyblok token is never embedded in HTML meta tags or attributes', () => {
+    assert.doesNotMatch(indexHtml, /name=["']storyblok-token["']/i, 'HTML must never contain storyblok-token meta tag');
+    assert.doesNotMatch(testHtml, /name=["']storyblok-token["']/i, 'Test HTML must never contain storyblok-token meta tag');
+  });
+
+  test('resolveStoryblokUrl blocks dangerous javascript: and data: protocols', () => {
+    assert.equal(resolveStoryblokUrl('javascript:alert(1)'), '#', 'javascript: protocol must be blocked');
+    assert.equal(resolveStoryblokUrl('data:text/html;base64,PHNjcmlwdD4='), '#', 'data: protocol must be blocked');
+    assert.equal(resolveStoryblokUrl('vbscript:msgbox(1)'), '#', 'vbscript: protocol must be blocked');
+    assert.equal(resolveStoryblokUrl({ url: 'javascript:void(0)' }), '#', 'Object with javascript url must be blocked');
+  });
+
+  test('Storyblok bridge supports real-time Visual Editor reconciliation: adding, removing, and reordering link_button using stable _uid', () => {
+    const bridgeJs = fs.readFileSync(path.join(siteDir, 'assets', 'js', 'storyblok-bridge.js'), 'utf8');
+
+    class MockElement {
+      constructor(tag) {
+        this.tagName = tag.toUpperCase();
+        this.children = [];
+        this.dataset = {};
+        this._classList = new Set();
+        this.innerHTML = '';
+        this.textContent = '';
+        this.href = '';
+        this.src = '';
+      }
+      get classList() {
+        const self = this;
+        return {
+          add(c) { self._classList.add(c); },
+          contains(c) { return self._classList.has(c); },
+          remove(c) { self._classList.delete(c); }
+        };
+      }
+      set className(cn) {
+        this._classList = new Set(cn.split(/\s+/).filter(Boolean));
+      }
+      get className() {
+        return Array.from(this._classList).join(' ');
+      }
+      appendChild(child) {
+        const idx = this.children.indexOf(child);
+        if (idx !== -1) this.children.splice(idx, 1);
+        this.children.push(child);
+        child.parentElement = this;
+        return child;
+      }
+      remove() {
+        if (this.parentElement) {
+          const idx = this.parentElement.children.indexOf(this);
+          if (idx !== -1) this.parentElement.children.splice(idx, 1);
+          this.parentElement = null;
+        }
+      }
+      querySelector(sel) {
+        return null;
+      }
+    }
+
+    const list = new MockElement('ul');
+    list.className = 'linktree-list';
+    const initialItem = new MockElement('li');
+    initialItem.className = 'linktree-item';
+    initialItem.dataset.uid = 'uid-initial-1';
+    list.appendChild(initialItem);
+
+    const doc = {
+      title: '',
+      documentElement: new MockElement('html'),
+      querySelector(sel) {
+        if (sel === '.linktree-list') return list;
+        return null;
+      },
+      createElement(tag) {
+        return new MockElement(tag);
+      },
+      body: new MockElement('body')
+    };
+
+    const sandbox = {
+      window: {},
+      document: doc,
+      location: { search: '?_storyblok=1' },
+      URLSearchParams,
+      Set, Map, Array, String, Boolean, console
+    };
+    sandbox.window = sandbox;
+
+    runInNewContext(bridgeJs, sandbox);
+    assert.equal(typeof sandbox.storyblokApplyContent, 'function', 'storyblokApplyContent must be exposed for bridge updates');
+
+    // 1. Add a new link_button
+    sandbox.storyblokApplyContent({
+      body: [
+        { _uid: 'uid-initial-1', component: 'link_button', label: 'Existing Button' },
+        {
+          _uid: 'uid-new-link',
+          component: 'link_button',
+          label: 'Test Link Button',
+          url: 'https://example.com/test-button',
+          show_on: ['instagram', 'default']
+        }
+      ]
+    });
+
+    assert.equal(list.children.length, 2, 'New item must be dynamically appended to linktree-list');
+    const addedItem = list.children[1];
+    assert.equal(addedItem.dataset.uid, 'uid-new-link', 'Added item must have matching data-uid');
+    assert.match(addedItem.innerHTML, /class="link-button/, 'Added item must have link-button class');
+    assert.match(addedItem.innerHTML, /Test Link Button/, 'Added item must render label');
+    assert.match(addedItem.innerHTML, /href="https:\/\/example\.com\/test-button"/, 'Added item must have resolved URL');
+    assert.match(addedItem.innerHTML, /class="link-button__icon"/, 'Added item must have icon wrapper');
+    assert.equal(addedItem.dataset.showOn, 'instagram,default', 'Surface filtering show_on attributes must be preserved');
+
+    // 2. Reorder items (place new button before initial button)
+    sandbox.storyblokApplyContent({
+      body: [
+        { _uid: 'uid-new-link', component: 'link_button', label: 'Test Link Button' },
+        { _uid: 'uid-initial-1', component: 'link_button', label: 'Existing Button' }
+      ]
+    });
+    assert.equal(list.children[0].dataset.uid, 'uid-new-link', 'First item in DOM must be uid-new-link after reorder');
+    assert.equal(list.children[1].dataset.uid, 'uid-initial-1', 'Second item in DOM must be uid-initial-1 after reorder');
+
+    // 3. Remove the link_button
+    sandbox.storyblokApplyContent({
+      body: [
+        { _uid: 'uid-initial-1', component: 'link_button', label: 'Existing Button' }
+      ]
+    });
+    assert.equal(list.children.length, 1, 'Removed item must be pruned from DOM');
+    assert.equal(list.children[0].dataset.uid, 'uid-initial-1', 'Only remaining item must be uid-initial-1');
+  });
+
+  test('Mobile Android Chrome theme support, viewport meta tags, and touch optimizations', () => {
+    // 1. Meta tags in HTML head
+    assert.match(indexHtml, /<meta\s+name="color-scheme"\s+content="light dark">/, 'HTML head must specify color-scheme: light dark');
+    assert.match(indexHtml, /<meta\s+name="theme-color"\s+content="[^"]+">/, 'HTML head must specify theme-color meta tag');
+    assert.match(testHtml, /<meta\s+name="color-scheme"\s+content="light dark">/, 'Test HTML head must specify color-scheme: light dark');
+    assert.match(testHtml, /<meta\s+name="theme-color"\s+content="[^"]+">/, 'Test HTML head must specify theme-color meta tag');
+
+    // 2. CSS color-scheme rules preventing Android Chrome Auto-Dark inversion
+    const css = fs.readFileSync(path.join(siteDir, 'css', 'main.css'), 'utf8');
+    assert.match(css, /\[data-theme=["']?dark["']?\]\s*\{[^}]*color-scheme:\s*dark/i, 'CSS dark theme must declare color-scheme: dark');
+    assert.match(css, /\[data-theme=["']?teal["']?\]\s*\{[^}]*color-scheme:\s*dark/i, 'CSS teal theme must declare color-scheme: dark');
+    assert.match(css, /\[data-theme=["']?warm["']?\]\s*\{[^}]*color-scheme:\s*light/i, 'CSS warm/pale theme must declare color-scheme: light');
+
+    // 3. Root html background to prevent viewport canvas flashing
+    assert.match(css, /html\s*\{[^}]*background-color:\s*var\(--color-page-bg\)/i, 'html root element must define background-color to avoid viewport flashing');
+
+    // 4. Touch action manipulation for instant mobile response
+    assert.match(css, /\.surface-switcher__btn\s*\{[^}]*touch-action:\s*manipulation/i, 'Switcher buttons must use touch-action: manipulation to eliminate mobile 300ms delay');
+  });
+
+  test('Theme query param (?theme=dark, ?theme=teal) and applyTheme update document theme, colorScheme and meta theme-color', () => {
+    const switcherJs = fs.readFileSync(path.join(siteDir, 'assets', 'js', 'surface-switcher.js'), 'utf8');
+
+    class MockMeta {
+      constructor(name, content) {
+        this.name = name;
+        this.content = content;
+      }
+      setAttribute(k, v) {
+        if (k === 'content') this.content = v;
+      }
+      getAttribute(k) {
+        return k === 'content' ? this.content : null;
+      }
+    }
+
+    class MockEl {
+      constructor(tag) {
+        this.tagName = tag.toUpperCase();
+        this.dataset = {};
+        this.style = {};
+        this.attributes = {};
+      }
+      setAttribute(k, v) { this.attributes[k] = v; }
+      getAttribute(k) { return this.attributes[k]; }
+      classList = {
+        toggle: () => {},
+        add: () => {},
+        remove: () => {}
+      };
+    }
+
+    const themeMeta = new MockMeta('theme-color', '#ffffff');
+    const htmlEl = new MockEl('html');
+
+    const sandbox = {
+      window: {},
+      document: {
+        documentElement: htmlEl,
+        querySelector(sel) {
+          if (sel === 'meta[name="theme-color"]') return themeMeta;
+          return null;
+        },
+        querySelectorAll() { return []; },
+        getElementById() { return null; },
+        readyState: 'complete',
+        addEventListener() {}
+      },
+      location: {
+        pathname: '/test/',
+        search: '?preview=true&theme=dark',
+        hostname: 'example.com'
+      },
+      URLSearchParams,
+      URL,
+      history: { pushState() {} }
+    };
+    sandbox.window = sandbox;
+
+    runInNewContext(switcherJs, sandbox);
+    assert.equal(typeof sandbox.applyTheme, 'function', 'applyTheme must be exposed');
+
+    // 1. Initial dark theme from query param
+    assert.equal(htmlEl.dataset.theme, 'dark', 'Dataset theme must be set to dark');
+    assert.equal(htmlEl.style.colorScheme, 'dark', 'colorScheme style must be dark for dark theme');
+    assert.equal(themeMeta.content, '#000', 'theme-color meta content must be updated to #000 for dark theme');
+
+    // 2. Switch to teal theme
+    sandbox.applyTheme('teal', false);
+    assert.equal(htmlEl.dataset.theme, 'teal', 'Dataset theme must be set to teal');
+    assert.equal(htmlEl.style.colorScheme, 'dark', 'colorScheme style must be dark for teal theme');
+    assert.equal(themeMeta.content, '#08415c', 'theme-color meta content must be updated to #08415c for teal theme');
+
+    // 3. Switch to pale theme
+    sandbox.applyTheme('pale', false);
+    assert.equal(htmlEl.dataset.theme, 'pale', 'Dataset theme must be set to pale');
+    assert.equal(htmlEl.style.colorScheme, 'light', 'colorScheme style must be light for pale theme');
+    assert.equal(themeMeta.content, '#fefadc', 'theme-color meta content must be updated to #fefadc for pale theme');
+  });
+
+  test('Storyblok bridge does not block mobile clicks when opened standalone (preventClicks disabled outside iframe)', () => {
+    const bridgeJs = fs.readFileSync(path.join(siteDir, 'assets', 'js', 'storyblok-bridge.js'), 'utf8');
+
+    // Verify bridge guards preventClicks with isFramed / window.self !== window.top
+    assert.match(bridgeJs, /preventClicks:\s*isFramed/, 'Bridge must set preventClicks: isFramed so standalone mobile tabs do not have clicks blocked');
+    assert.match(bridgeJs, /isFramed\s*=\s*(typeof window !== 'undefined' &&\s*)?window\.self\s*!==\s*window\.top/, 'Bridge must detect whether running framed in Visual Editor');
+  });
+
+  test('Security & Secrets Audit: no tokens, secrets, or env credentials in final build or git tracking', () => {
+    // 1. Scan all files in _site for secret patterns
+    function scanDir(dir) {
+      const files = fs.readdirSync(dir);
+      for (const f of files) {
+        const full = path.join(dir, f);
+        if (fs.statSync(full).isDirectory()) {
+          scanDir(full);
+        } else if (f.endsWith('.html') || f.endsWith('.js') || f.endsWith('.json')) {
+          const content = fs.readFileSync(full, 'utf8');
+          // Disallow draft tokens, secret tokens, private keys, or passwords
+          assert.doesNotMatch(content, /storyblok-token/i, `Secret leak in ${full}: contains storyblok-token`);
+          assert.doesNotMatch(content, /STORYBLOK_TOKEN\s*=\s*['"][a-zA-Z0-9_-]+['"]/i, `Secret leak in ${full}: contains token assignment`);
+          assert.doesNotMatch(content, /-----BEGIN (RSA |EC )?PRIVATE KEY-----/, `Secret leak in ${full}: contains private key`);
+        }
+      }
+    }
+    scanDir(siteDir);
+
+    // 2. Check .gitignore excludes .env files
+    const gitignore = fs.readFileSync(path.resolve('.gitignore'), 'utf8');
+    assert.match(gitignore, /\.env/, '.gitignore must ignore .env files');
   });
 });
+
+
 
