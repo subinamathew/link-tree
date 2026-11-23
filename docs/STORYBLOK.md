@@ -12,7 +12,13 @@ Diese Anleitung erklärt die Pflege der Link-in-Bio-Website mit Storyblok. Sie e
 - **Static-first**: The website builds into pure, lightning-fast static HTML.
 - **Privacy-first**: Zero tracking cookies, zero external fonts (all fonts are local), and zero initial third-party connections.
 - **Visual Editor**: The Storyblok live preview bridge only loads when an editor is actively previewing inside the Storyblok Visual Editor (`?_storyblok=...`). Visitors never load any Storyblok scripts.
-- **Brand Colors**: Theme colors remain consistent across all pages and surfaces. URL parameters filter content without altering brand colors.
+- **Official Echo Kirche Styleguide**:
+  - **Colors**: Primary Teal (`#08415C`), Secondary Lavender (`#846B8A`), Background Pastel Yellow (`#FEFADC`).
+  - **Typography**: `Clash Display` (600 Semibold) for headings & sub-brand wordmarks; `Inter` (400 Regular) for body/UI; optional digital accents `Perandory Condensed` & `Sloop Script Pro`.
+  - **Sub-Brand Logo Rule**: When displaying the sub-brand text logo, **echo** is set in `Clash Display Semibold` (`600`) and **kids** is set in `Clash Display Regular` (`400`).
+  - **Logo Clear Space (*Schutzzone*)**: Maintained equal to the width/height of lowercase "e" from *echo* wordmark on all four sides. No text, buttons, or graphics may enter this zone. Never stretch, compress, rotate, or distort the logo.
+  - **Media Budget & Subject Matter**: Upload `.webp` format only, **max 400KB** per image, max width **1900px** for heroes and **1400px** for standard cards (`16:9`, `3:2`, `4:3`, `3:4` aspect ratios). Subject matter: authentic photos of people, community, faces, and visible emotions.
+  - **Brand Color Constancy**: Theme colors remain consistent across all pages and surfaces. URL parameters filter content without altering brand colors.
 
 ```mermaid
 flowchart TD
@@ -421,7 +427,7 @@ Der Bereich ganz unten auf der Seite mit Impressum, Datenschutz und Social-Media
   - `organization_name` (Text): Offizieller Name (z. B. `Echo Gifhorn`, `Echo Wolfsburg`, `Echo Helmstedt`).
   - `street` (Text): Straße und Hausnummer (z. B. `Schützenplatz 1` oder für Helmstedt leer lassen).
   - `city` (Text): Postleitzahl und Ort (z. B. `38518 Gifhorn`, `38440 Wolfsburg`, `Helmstedt`).
-  - `email` (Text): Kontakt-E-Mail (z. B. `info@kirche-im-brauhaus.de`, `david.loewens@kib-gifhorn.de`).
+  - `email` (Text): Kontakt-E-Mail (z. B. `info@kirche-echo.de`, `david.loewens@kib-gifhorn.de`).
   - `mailto` (Text, Optional): E-Mail-Link mit Betreff (z. B. `mailto:david.loewens@kib-gifhorn.de?subject=Kontakt%20EchoHelmstedt`).
   - `impressum_url` (Text): Link zum Impressum (z. B. `https://kirche-echo.de/impressum/`).
   - `datenschutz_url` (Text): Link zur Datenschutzerklärung (z. B. `https://kirche-echo.de/datenschutz/`).

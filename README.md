@@ -59,7 +59,14 @@ flowchart TD
 - **Multi-Location Surface Routing**: Dedicated, blazing-fast static routes (`/gf`, `/gifhorn`, `/wob`, `/wolfsburg`, `/he`, `/helmstedt`, `/ig`, `/instagram`) generated at build time with clean canonical URLs.
 - **Preview vs. Production Security**: The `/test` page with interactive surface and theme switchers is strictly reserved for preview mode and hidden on the production site (automatically redirects regular visitors to `/`).
 - **404 Root Redirection & Echo Logo Lazy Loader**: Unmatched routes and 404s display a clean, animated lazy loader featuring just the Echo logo and automatically redirect visitors to the root page (`/`). Image cards also include the Echo logo as a subtle SVG placeholder while lazy loading.
-- **Brand Color Constancy**: Strict adherence to the Echo brand palette across all routes. City switches, surfaces, and query parameters filter content without changing brand colors.
+- **Brand Color Constancy & Official Styleguide**: Strict adherence to the official Echo Kirche brand palette across all routes and components:
+  - **Primary Teal (`#08415C`)**, **Secondary Lavender (`#846B8A`)**, and **Background Light Pastel Yellow (`#FEFADC`)**. Full-bleed backgrounds can also use `#846B8A` or `#08415C` with inverted `#FFFFFF` or `#FEFADC` logos/text.
+  - **Typography**: `Clash Display` (600 Semibold for headings and *echo*; 400 Regular for sub-brands like *kids*); `Inter` (400 Regular) for body/UI/links; optional digital accents `Perandory Condensed` and `Sloop Script Pro`.
+  - **Type scale**: Strict H1–H6 hierarchy (48px, 40px, 32px, 24px, 20px, 18px) and body scale (18px, 16px, 14px, 12px, 10–11px).
+  - **Media Budget & Subject Matter**: Web images in `.webp` format only, max 400KB, max 1900px (heroes) and 1400px (standard cards). Authentic photos of people, community, faces, and visible emotions.
+  - **Logo Clear Space (*Schutzzone*)**: Minimum buffer equal to height/width of lowercase letter "e" on all sides. No text/graphics inside.
+  - **Unspecified CSS Defaults**: Line-height `1.4–1.5` (body) / `1.1–1.2` (headings), centered `~600px` container, `4px`/`8px`/`16px`/`999px` radii.
+  - City switches, surfaces, and query parameters filter content without changing brand colors.
 - **Collapsible Service Times Card (`DropdownCard`)**:
   - Implemented with pure CSS `<details>` / `<summary>` (100% accessible, zero client-side JavaScript required).
   - Responsive 3-column auto-fit grid (`repeat(auto-fit, minmax(200px, 1fr))`) that stacks gracefully on mobile.

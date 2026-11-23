@@ -1,4 +1,4 @@
-{% set resolvedUrl = (item.url | resolveUrl) if (item.url | resolveUrl) else (item.url.url or item.url.cached_url or item.url or '#') %}
+{% set resolvedUrl = item.url | resolveUrl %}
 <a class="link-button{% if item.icon and item.icon != '' %} link-button--with-icon{% endif %}" href="{{ resolvedUrl }}" rel="noopener noreferrer">
   {% if item.icon and item.icon != '' %}
   <span class="link-button__icon" aria-hidden="true">

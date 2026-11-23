@@ -43,7 +43,7 @@ Rules:
 - **Centered Header Content**: The summary button must center its label and church icon.
 - **Responsive 3-Column Grid**: Defaults to an auto-fit grid (`repeat(auto-fit, minmax(200px, 1fr))`) that wraps cleanly on mobile devices.
 - **100% Editable Mini Cards**: All sub-properties (`title`, `time`, `location`, `details`, `url`, `actionLabel`, `hasKids`, `kidsLabel`, `showOn`, `hideOn`) must be exposed in schemas and editable by content editors.
-- **Echo Kids Indicator**: Toggle badge with an inline child SVG icon and customizable label (default: `"Echo Kids verfügbar"`).
+- **Echo Kids Indicator**: Toggle badge with an inline child SVG icon and customizable label (default: `"Echo Kids verfügbar"`). When displaying the sub-brand text logo, **echo** is set in `Clash Display Semibold` (`600`) and **kids** is set in `Clash Display Regular` (`400`).
 - **Surface Scoping**: Filter internal columns using `filterBySurface` so that dedicated city pages (e.g., `/gf`) display their respective services (e.g., Gifhorn 10:00 & 12:00 in BSK-Saal), while `/` displays all active default cards.
 
 Deliverables:
@@ -108,7 +108,9 @@ Rules:
   11. `footer_legal` (Legal & Contact Information)
   12. `social_item` (Social Media Icon Button)
 - Production markup rendered by Eleventy templates must strictly match the component specifications;
-- Support Storyblok `_editable` attributes for live visual click-to-edit in the Storyblok bridge.
+- Support Storyblok `_editable` attributes for live visual click-to-edit in the Storyblok bridge;
+- Media & Images: All uploaded images must be in `.webp` format (`max 400KB`), max width `1900px` for hero images and `1400px` for standard images (`16:9`, `3:2`, `4:3`, `3:4` aspect ratios).
+- Logo Clear Space: Maintain clear space equal to the width/height of lowercase "e" on all four sides. Never distort or recolor outside official brand colors.
 
 Deliverables:
 - `storyblok/components.json`;
@@ -125,6 +127,27 @@ Rules:
 - semantic tokens are preferred over literal colors in components;
 - new brand/styleguide inputs should primarily change token files, not component selectors;
 - keep components themeable through CSS custom properties;
+- **Official Brand Colors**:
+  - Primary / Dark Teal Blue: `#08415C` (headings, body text, logos, dark UI accents).
+  - Secondary / Muted Lavender: `#846B8A` (secondary text, highlights, buttons/accents).
+  - Background / Light Pastel Yellow: `#FEFADC` (page backgrounds, warm accents).
+  - Inverted / High-contrast: `#000000` and `#FFFFFF` for dark mode and inverted logos.
+- **Official Typography**:
+  - Headings & Sub-brand Wordmark: `Clash Display` (600 / Semibold). Sub-brand text logo: **echo** in Semibold 600, **kids** in Regular 400.
+  - Body & UI Text: `Inter` (400 / Regular).
+  - Optional Digital Accent Fonts: `Perandory Condensed` (Display) and `Sloop Script Pro` (Script).
+- **Exact Pixel Hierarchy & Type Scale**:
+  - H1: 48px (main title) | H2: 40px (major section) | H3: 32px (subsections)
+  - H4: 24px (profile title) | H5: 20px (cards, panels, link buttons) | H6: 18px (small headings)
+  - Body Large: 18px (bio intro/large copy) | Body: 16px (standard bio) | Body Small: 14px (secondary descriptions)
+  - Caption: 12px (captions/footer notes) | Overline/Label: 10px–11px (tags, badges, labels)
+- **Logo Clear Space (*Schutzzone*)**: Minimum buffer equal to height/width of lowercase `"e"` from *echo* wordmark on all four sides. No graphics, buttons, or text inside.
+- **Unspecified CSS Property Defaults**:
+  - line-height: `1.4–1.5` for body text, `1.1–1.2` for headings;
+  - letter-spacing: `normal` (`-0.01em` on large headings);
+  - container width: centered `~600px` (or `~42rem` / `672px`) max width;
+  - border radius: `4px` (small), `8px` (medium), `16px` (large), `999px` (pill);
+  - drop shadows: subtle, prioritizing borders and clean whitespace first.
 - **Strict adherence to brand colors**: never change colors based on URL parameters, surfaces, or sublinks. Brand identity and action colors must remain unified and consistent across all pages and views.
 
 Deliverables:

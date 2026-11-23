@@ -18,7 +18,13 @@ The website itself is compiled by **Eleventy (11ty)** into pure, lightning-fast 
 1. **Static-First**: Content is fetched from Storyblok during the build. Regular visitors receive instant static HTML without running heavy CMS JavaScript.
 2. **Privacy-First (GDPR / DSGVO)**: Zero tracking cookies, zero external fonts (all fonts are hosted locally), and zero initial third-party connections. No cookie banner is required on initial visit.
 3. **2-Click YouTube Consent**: YouTube videos load a local/uploaded thumbnail first. An embed iframe is only created after an explicit user click on the play button, using YouTube Privacy-Enhanced Mode (`youtube-nocookie.com`).
-4. **Brand Color Constancy**: Brand colors remain strictly invariant across all routes and views. City switches and surfaces filter content visibility only; they never alter brand styling or colors.
+4. **Brand Color Constancy & Official Styleguide**:
+   - **Colors**: Primary Teal (`#08415C`), Secondary Lavender (`#846B8A`), Background Pastel Yellow (`#FEFADC`).
+   - **Typography**: `Clash Display` (600 Semibold) for headings & sub-brand wordmarks; `Inter` (400 Regular) for body/UI; optional digital accents `Perandory Condensed` & `Sloop Script Pro`.
+   - **Sub-Brand Logo Rule**: When displaying the sub-brand text logo, **echo** is set in `Clash Display Semibold` (`600`) and **kids** is set in `Clash Display Regular` (`400`).
+   - **Logo Clear Space (*Schutzzone*)**: Maintained equal to the width/height of lowercase "e" from *echo* wordmark on all four sides. No text, buttons, or graphics may enter this zone. Never stretch, compress, rotate, or distort the logo.
+   - **Media Budget & Subject Matter**: Upload `.webp` format only, **max 400KB** per image, max width **1900px** for heroes and **1400px** for standard cards (`16:9`, `3:2`, `4:3`, `3:4` aspect ratios). Subject matter: authentic photos of people, community, faces, and visible emotions.
+   - Brand colors remain strictly invariant across all routes and views. City switches and surfaces filter content visibility only; they never alter brand styling or colors.
 5. **Dual-Tier Curation**:
    - **Tier 1 (`display_in_default`)**: Curates the main landing page (`/`) independently.
    - **Tier 2 (`show_on` / `hide_on`)**: Targets components to specific campus routes (`gifhorn`, `wolfsburg`, `helmstedt`, `instagram`).
@@ -438,7 +444,7 @@ The bottom footer section containing organization address, mandatory German lega
 | `organization_name` | Organization Name | Official registered name of the church/association. | `Text` | `Kirche im Brauhaus e.V.` | No | e.g. `Kirche im Brauhaus e.V.`. |
 | `street` | Street Address | Registered street address. | `Text` | `Schützenplatz 1` | No | e.g. `Schützenplatz 1`. |
 | `city` | Postal Code & City | City and postal code. | `Text` | `38518 Gifhorn` | No | e.g. `38518 Gifhorn`. |
-| `email` | Contact E-Mail | Official contact email. | `Text` | `info@kirche-im-brauhaus.de` | No | e.g. `info@kirche-im-brauhaus.de`. |
+| `email` | Contact E-Mail | Official contact email. | `Text` | `info@kirche-echo.de` | No | e.g. `info@kirche-echo.de`. |
 | `mailto` | Custom Mailto URI | Custom mailto link with optional subject. | `Text` | None | No | e.g. `mailto:david.loewens@kib-gifhorn.de?subject=Kontakt%20EchoHelmstedt`. |
 | `impressum_url` | Impressum URL | Mandatory link to legal imprint (DDG/TMG). | `Link` or `Text` | `/impressum/` | No | Local static route: `/impressum/`. |
 | `datenschutz_url` | Datenschutz URL | Mandatory link to privacy policy (DSGVO). | `Link` or `Text` | `/datenschutz/` | No | Local static route: `/datenschutz/`. |

@@ -4,15 +4,15 @@ Use this file as the starting brief when handing the repository to Antigravity o
 
 ## Objective
 
-Implement the static link-in-bio application specified by this repository.
+Implement the static link-in-bio application specified by this repository according to the official **Echo Kirche Design System & Styleguide**.
 
 Read, in this order:
-1. `AGENTS.md`
+1. `AGENTS.md` (authoritative agent directives and Echo Kirche styleguide)
 2. `SKILLS.md`
-3. `docs/ARCHITECTURE.md`
-4. `docs/CONTENT-MODEL.md`
-5. `docs/STYLEGUIDE.md`
-6. `docs/STORYBOOK.md`
+3. `docs/STYLEGUIDE.md` (official brand colors, typography, type scale, logo clear space, web image budget)
+4. `docs/ARCHITECTURE.md`
+5. `docs/CONTENT-MODEL.md`
+6. `docs/STORYBLOK.md`
 7. `docs/LEGAL-PRIVACY-DE.md`
 8. `docs/PRIVACY-DEPENDENCIES.md`
 
@@ -21,7 +21,10 @@ Read, in this order:
 Create:
 - package/build setup;
 - Eleventy config;
-- Sass pipeline;
+- Sass pipeline with official Echo Kirche design tokens:
+  - Colors: `#08415C` (Teal), `#846B8A` (Lavender), `#FEFADC` (Pastel Yellow);
+  - Fonts: `Clash Display` (600 Semibold) for headings, `Inter` (400 Regular) for body/UI, `Perandory Condensed` & `Sloop Script Pro` for digital accents;
+  - Type scale: exact H1–H6 and body hierarchy;
 - JSON Schema validation;
 - base document/layout;
 - Storybook HTML + Vite config;

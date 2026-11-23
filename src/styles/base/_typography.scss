@@ -52,3 +52,57 @@ h6 {
 p {
   color: var(--color-text-muted);
 }
+
+// Echo Kirche Type Scale Classes
+.body-large {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.125rem; // 18px
+  line-height: 1.5;
+}
+
+.body-standard,
+.body-base {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem; // 16px
+  line-height: 1.5;
+}
+
+.body-small {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.875rem; // 14px
+  line-height: 1.45;
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.75rem; // 12px
+  line-height: 1.4;
+}
+
+.overline,
+.label-badge {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.6875rem; // 10px–11px
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+// Sub-brand Wordmark rule: "echo" (Semibold 600) + "kids" (Regular 400)
+.sub-brand-wordmark,
+.echo-kids-wordmark {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+
+  .wordmark-echo {
+    font-weight: 600;
+  }
+
+  .wordmark-kids {
+    font-weight: 400;
+  }
+}

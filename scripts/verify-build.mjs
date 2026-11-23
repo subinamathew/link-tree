@@ -53,9 +53,10 @@ for (const file of jsFiles) {
     console.error(`Error: Found unexpected client-side JavaScript bundle: ${relPath}`);
     process.exit(1);
   }
-  // Verify that justified JS files stay under budget (< 6 KB each)
+  // Verify that justified JS files stay under budget (< 6 KB for production scripts, < 16 KB for preview editor bridge)
   const size = fs.statSync(file).size;
-  if (size > 6144) {
+  const maxBudget = file.endsWith('storyblok-bridge.js') ? 16384 : 6144;
+  if (size > maxBudget) {
     console.error(`Error: ${relPath} exceeded size budget: ${size} bytes`);
     process.exit(1);
   }
@@ -66,7 +67,9 @@ const htmlFiles = findFiles(siteDir, '.html');
 const forbiddenPatterns = [
   { pattern: /<iframe/i, message: 'Forbidden initial <iframe> embed found (violates zero initial third-party rule)' },
   { pattern: /fonts\.(googleapis|gstatic)\.com/i, message: 'Forbidden external font request found' },
-  { pattern: /<script(?![^>]*src=["']\/assets\/js\/(video-embed|storyblok-bridge|surface-switcher)\.js["'])[^>]*>/i, message: 'Forbidden unauthorized <script> tag found' }
+  { pattern: /<script(?![^>]*src=["']\/assets\/js\/(video-embed|storyblok-bridge|surface-switcher)\.js["'])[^>]*>/i, message: 'Forbidden unauthorized <script> tag found' },
+  { pattern: /name=["']storyblok-token["']/i, message: 'Forbidden Storyblok API token meta tag found in HTML (security leak)' },
+  { pattern: /href=["']javascript:/i, message: 'Forbidden unsafe javascript: URI found in HTML (XSS vector)' }
 ];
 
 for (const file of htmlFiles) {

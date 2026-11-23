@@ -63,7 +63,7 @@
     # - object-src 'none': Disallow Flash/Java plugins
     # - base-uri 'self': Prevent base tag injection
     # - form-action 'self': Prevent malicious form submissions
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://a.storyblok.com https://*.storyblok.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://app.storyblok.com https://*.storyblok.com; connect-src 'self' https://api.storyblok.com https://gapi.storyblok.com https://app.storyblok.com https://*.storyblok.com wss://*.storyblok.com; frame-src 'self' https://www.youtube-nocookie.com; frame-ancestors 'self' https://app.storyblok.com https://*.storyblok.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://a.storyblok.com https://*.storyblok.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://app.storyblok.com https://*.storyblok.com; connect-src 'self' https://api.storyblok.com https://gapi.storyblok.com https://app.storyblok.com https://*.storyblok.com wss://*.storyblok.com; frame-src 'self' https://www.youtube-nocookie.com; frame-ancestors 'self' https://app.storyblok.com https://storyblok.com https://*.storyblok.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
     
     # MIME-sniffing protection
     X-Content-Type-Options = "nosniff"
@@ -77,8 +77,7 @@
     # Enforce HTTPS with 1 year HSTS and preloading
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     
-    # Process isolation and cross-origin protection
-    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+    # Cross-origin protection
     X-Permitted-Cross-Domain-Policies = "none"
     
     # Default HTML caching: revalidate immediately on new deploys
@@ -137,6 +136,17 @@
   to = "/instagram/"
   status = 301
 
+# Map Storyblok "home" slug to root path /
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/home/*"
+  to = "/"
+  status = 200
+
 # Allow /test only in Storyblok preview or with explicit preview query parameter
 [[redirects]]
   from = "/test"
@@ -175,7 +185,7 @@
   status = 302
   force = true
 
-# Fallback for unmatched routes: serve /404.html with status 404 (renders Echo logo lazy loader and redirects to /)
+# Fallback for unmatched routes: serve /404.html with status 404
 [[redirects]]
   from = "/*"
   to = "/404.html"

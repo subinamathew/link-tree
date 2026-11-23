@@ -48,10 +48,10 @@
           {% if col.details %}
           <span class="dropdown-card__column-details">{{ col.details }}</span>
           {% endif %}
-          {% set resolvedColUrl = (col.url | resolveUrl) if (col.url | resolveUrl) else (col.url.url or col.url.cached_url or col.url) %}
-          {% if resolvedColUrl %}
+          {% set resolvedColUrl = col.url | resolveUrl %}
+          {% if resolvedColUrl and resolvedColUrl != '#' %}
           <a class="dropdown-card__column-link" href="{{ resolvedColUrl }}" rel="noopener noreferrer">
-            {{ col.actionLabel or col.action_label or "Standort &amp; Infos &rarr;" | safe }}
+            {{ col.actionLabel or col.action_label or "Standort & Infos →" }}
           </a>
           {% endif %}
         </li>
@@ -82,11 +82,11 @@
       {% endif %}
     {% endif %}
 
-    {% set resolvedItemActionUrl = (item.url | resolveUrl) if (item.url | resolveUrl) else (item.url.url or item.url.cached_url or item.url) %}
-    {% if resolvedItemActionUrl %}
+    {% set resolvedItemActionUrl = item.url | resolveUrl %}
+    {% if resolvedItemActionUrl and resolvedItemActionUrl != '#' %}
     <div class="dropdown-card__footer">
       <a class="dropdown-card__action-link" href="{{ resolvedItemActionUrl }}" rel="noopener noreferrer">
-        {{ item.actionLabel or item.action_label or "Alle Standorte &amp; Livestream &rarr;" | safe }}
+        {{ item.actionLabel or item.action_label or "Alle Standorte & Livestream →" }}
       </a>
     </div>
     {% endif %}

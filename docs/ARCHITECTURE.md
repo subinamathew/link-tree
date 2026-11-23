@@ -140,10 +140,18 @@ The site generates dedicated static HTML files at build time:
 | `/test/` | `all` | Preview-only test page containing surface and theme testing toolbars. Hidden on production (automatically redirects regular visitors to `/`). |
 | `/404.html` | `default` | Branded 404 page featuring the Echo logo lazy loader; automatically redirects visitors back to the root page (`/`). |
 
-### 5.3 Brand Color Invariant (Strict Rule)
+### 5.3 Echo Kirche Brand Styleguide & Color Invariant (Strict Rule)
 
 **Brand colors must never change based on URL parameters, surfaces, or sublinks.**
-- All city pages (`/gf`, `/wob`, `/he`), channel pages (`/ig`), and default routes share the identical canonical brand palette (`primary`, `primary-hover`, `surface`, `border`, `text`).
+- All city pages (`/gf`, `/wob`, `/he`), channel pages (`/ig`), and default routes share the identical canonical brand palette:
+  - **Primary / Dark Teal Blue (`#08415C`)**: Headings, body text, logos, buttons, and dark accents.
+  - **Secondary / Muted Lavender (`#846B8A`)**: Secondary text, highlights, buttons/accents.
+  - **Background / Light Pastel Yellow (`#FEFADC`)**: Warm backgrounds and surfaces.
+  - **Inverted / High-contrast**: `#000000` and `#FFFFFF` for dark mode and inverted logos.
+- **Typography & Scale**: `Clash Display` (600 Semibold) for headings & sub-brand wordmark (**echo** 600, **kids** 400); `Inter` (400 Regular) for body/UI. Exact H1–H6 scale (48px, 40px, 32px, 24px, 20px, 18px).
+- **Logo Clear Space (*Schutzzone*)**: Maintain a minimum clear buffer around all four sides equal to the height/width of lowercase letter "e" from *echo* wordmark. No text, buttons, borders, or graphics may enter this zone. Never stretch, compress, rotate, or distort the logo.
+- **Web Images**: `.webp` format only, max 400KB, max 1900px hero / 1400px standard (3:2, 4:3, 16:9, 3:4). Subject matter: authentic photos of people, community, faces, and visible emotions.
+- **Unspecified CSS Property Defaults**: For properties not defined in the manual, use clean web defaults: line-height `1.4–1.5` (body) / `1.1–1.2` (headings), normal letter-spacing, centered `~600px` (or `~42rem`) container, `4px`/`8px`/`16px`/`999px` radii, and subtle shadows.
 - URL parameters filter content visibility only; they never alter brand styling or token values.
 
 ---

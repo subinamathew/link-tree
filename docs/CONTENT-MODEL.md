@@ -73,6 +73,18 @@ Legal identity/address values should live in a separate operator configuration t
 
 The thumbnail should be stored locally for the strict privacy profile.
 
+## Image & Media Asset Rules
+
+All image assets must comply with the official Echo Kirche styleguide:
+- **Format**: `.webp` format only.
+- **Budget**: Maximum **400KB** per image file.
+- **Dimensions**:
+  - Hero images: **1900px** maximum width.
+  - Standard cards/flyers: **1400px** maximum width.
+- **Standard Aspect Ratios**: `16:9` (video & horizontal cards), `3:2` (landscape photography), `4:3` (standard cards), and `3:4` (vertical portrait flyers).
+- **Subject Matter**: Authentic photos of people, community, faces, and visible emotions.
+- **Logo Clear Space (*Schutzzone*)**: A minimum clear buffer equal to the width/height of the lowercase letter **"e"** must surround the logo on all four sides. No text, buttons, borders, or graphics may enter this zone. Never distort, stretch, compress, rotate, or recolor outside approved brand colors (`#08415C`, `#846B8A`, `#FEFADC`, and inverted `#FFFFFF`).
+
 ## Surface filtering
 
 `showOn`: optional allow-list.

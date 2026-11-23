@@ -1,106 +1,110 @@
-# Styleguide
+# Echo Kirche — Official Design System & Styleguide
 
 ## Purpose
 
-The design system is intentionally token-first so the brand can be replaced later without rewriting components.
+This document is the authoritative design system and styleguide for **Echo Kirche** and all related digital properties (including link-in-bio sites, web applications, and CMS components).
 
-When a new styleguide is supplied, an agent should update token values first and only change component CSS when the new styleguide introduces a genuinely new semantic requirement.
+All development agents (Antigravity, Claude Code, GitHub Copilot, ChatGPT, Cursor, and human contributors) must strictly adhere to the tokens, typography scales, brand colors, media rules, and invariants defined here.
 
-## Token hierarchy
+---
 
-### Primitive tokens
-Raw palette and scale values.
+## 1. Spacing & Logo Clear Space (*Schutzzone*)
 
-Examples:
-- `--primitive-neutral-0`
-- `--primitive-neutral-900`
-- `--primitive-brand-500`
-- `--primitive-space-4`
+* **Logo Clear Space:** Maintain a minimum clear buffer around all four sides of the logo equal to the **height/width of the lowercase letter `"e"`** from the *echo* wordmark. No text, buttons, borders, or other graphics may enter this zone.
+* **Logo Integrity:** Never stretch, compress, rotate, distort, or alter the proportions of the logo. Never recolor the logo outside approved brand colors.
+* **Inverted Applications:** High-contrast white (`#FFFFFF`) logo is strictly used for dark mode or full-bleed Dark Teal Blue (`#08415C`) / Muted Lavender (`#846B8A`) backgrounds.
 
-### Semantic tokens
-Meaningful application roles.
+---
 
-Examples:
-- `--color-page-bg`
-- `--color-text`
-- `--color-text-muted`
-- `--color-surface`
-- `--color-border`
-- `--color-action-bg`
-- `--color-action-text`
-- `--color-focus-ring`
+## 2. Typography, Sizes & Hierarchy
 
-Components must consume semantic tokens, not primitive color tokens directly.
+* **Headings & Logo Font:** `Clash Display`
+  * **Semibold (600)** for main headings (H1–H6) and the word *echo*.
+  * **Regular (400)** for sub-brand/location qualifiers (such as *kids* in *echo kids*).
+* **Body, Buttons & Links Font:** `Inter` — **Regular (400)**.
+* **Optional Digital Accent Fonts** (for special banners, callouts, or magazine-style highlights):
+  * **Display/Headline Accent:** `Perandory Condensed` (`--font-accent-display`)
+  * **Script/Subheading Accent:** `Sloop Script Pro` (`--font-accent-script`)
 
-## Typography
+### Digital Type Scale & Linktree Usage
 
-Default:
-- system font stack;
-- no remote font requests.
+Apply this exact pixel hierarchy across all pages and components:
 
-Suggested stack:
+| Element | Font | Weight | Digital Size | Linktree Clone Usage |
+| :--- | :--- | :--- | :--- | :--- |
+| **H1** | Clash Display | Semibold (600) | **48px** (`3rem`) | Main page title (if used) |
+| **H2** | Clash Display | Semibold (600) | **40px** (`2.5rem`) | Major section headers |
+| **H3** | Clash Display | Semibold (600) | **32px** (`2rem`) | Subsections |
+| **H4** | Clash Display | Semibold (600) | **24px** (`1.5rem`) | Profile title / sub-brand header |
+| **H5** | Clash Display | Semibold (600) | **20px** (`1.25rem`) | Cards, panels, and link buttons |
+| **H6** | Clash Display | Semibold (600) | **18px** (`1.125rem`) | Small headings |
+| **Body Large** | Inter | Regular (400) | **18px** (`1.125rem`) | Bio intro text or large body copy |
+| **Body** | Inter | Regular (400) | **16px** (`1rem`) | Standard bio/description text |
+| **Body Small** | Inter | Regular (400) | **14px** (`0.875rem`) | Secondary link descriptions |
+| **Caption** | Inter | Regular (400) | **12px** (`0.75rem`) | Image captions / footer notes |
+| **Overline / Label** | Inter | Regular (400) | **10px–11px** (`0.625rem–0.6875rem`) | Tags, badges, category labels |
 
-```css
-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-```
+---
 
-Keep:
-- body text at least 1rem by default;
-- comfortable line-height;
-- headings with sensible responsive scaling via `clamp()`.
+## 3. Colors & Contrast Rules
 
-## Layout
+Use only the official Echo Kirche color palette:
 
-- mobile-first;
-- primary content max width approximately 42rem;
-- centered page shell;
-- consistent vertical rhythm;
-- touch targets approximately 44px minimum where practical;
-- media cards preserve declared aspect ratio.
+* **Page Background:** Light Pastel Yellow (`#FEFADC`) — designated for soft backgrounds.
+  * RGB: `rgb(254, 250, 220)`.
+  * Full-bleed variation note: Muted Lavender (`#846B8A`) or Dark Teal Blue (`#08415C`) can also be used as full-bleed backgrounds with inverted white (`#FFFFFF`) or Light Pastel Yellow (`#FEFADC`) text/logos.
+* **Primary Text & Dark Accents / Buttons:** Dark Teal Blue (`#08415C`).
+  * RGB: `rgb(8, 65, 92)`.
+  * Usage: Primary headings, body text, logos, action buttons, and dark UI accents.
+* **Secondary Accents / Hover States:** Muted Lavender (`#846B8A`).
+  * RGB: `rgb(132, 107, 138)`.
+  * Usage: Secondary text, highlights, buttons/accents, hover states, and logo variations.
+* **Inverted / High-Contrast:** Black (`#000000`) and white (`#FFFFFF`) for inverted logo applications, dark mode surfaces, and high-contrast card backgrounds.
 
-## Radius
+### Invariant: Brand Color Constancy
+Brand colors must **never** change based on URL parameters, surfaces, campus routes (`/gf`, `/wob`, `/he`), or sublinks. City switches and surfaces filter content visibility only; they never alter brand identity or action colors.
 
-Use semantic radius values:
-- small: badges/minor controls;
-- medium: buttons;
-- large: cards/media.
+---
 
-Do not invent component-specific radius values without adding a token.
+## 4. Images & Media Specs (Avatars / Banners)
 
-## Shadows
+* **Format & File Size:** `.webp` format only, **maximum 400 KB** per image.
+* **Max Widths:**
+  * **1900px** max width for hero/banner images.
+  * **1400px** max width for standard images.
+* **Aspect Ratios:** `3:2`, `4:3`, or `16:9` (also `3:4` for vertical portrait flyer cards).
+* **Subject Matter:** Authentic photos of people, community, faces, and visible emotions.
 
-Use sparingly. Prefer borders and spacing first.
+---
 
-## Motion
+## 5. Unspecified CSS Properties (Clean Web Defaults)
 
-Default to little or no motion. Any animation must:
-- respect `prefers-reduced-motion`;
-- not block interaction;
-- not be required for comprehension.
+The official brand manual does **not** define rules for:
+* **Line height (leading)** or **letter-spacing (kerning)**
+* **Container / column widths** (e.g., standard mobile Linktree column width)
+* **Border radius**, **drop shadows**, or **internal padding** for buttons and cards
 
-## Surface styling
+For these unspecified properties, all agents and developers must use clean web defaults:
+* **Line height (leading):**
+  * Body text: `line-height: 1.4–1.5`
+  * Headings: `line-height: 1.1–1.2`
+* **Letter-spacing (kerning):** `letter-spacing: normal` (or subtle `-0.01em` on large Clash Display display headings)
+* **Container / column width:** Centered `~600px` (or `~42rem` / `672px`) max-width container
+* **Border radius:**
+  * Small: `4px` (minor controls, badges)
+  * Medium: `8px` (buttons, cards)
+  * Large: `16px` (dialogs, flyouts)
+  * Pill: `999px` (badges, pill tags)
+* **Shadows:** Subtle (`0 1px 6px rgba(8, 65, 92, 0.06)` or `0 4px 20px rgba(8, 65, 92, 0.08)`), prioritizing borders and clean whitespace first.
+* **Touch Targets:** Minimum `44px` height/width for all interactive touch targets.
+* **Motion:** Respect `prefers-reduced-motion`; keep animations fast (< 250ms) and non-blocking.
 
-Surface variants (e.g. Instagram, Wolfsburg, Gifhorn, Helmstedt) control content targeting and link filtering only.
-They must NOT alter brand colors, action buttons, or theme tokens.
-The canonical brand palette is preserved across all surfaces, routes, and URL parameters.
+---
 
-## Updating from a future uploaded styleguide
+## 6. Accessibility (WCAG 2.2 AA)
 
-Agent workflow:
-
-1. Extract brand palette, typography, spacing, radius, border, and motion rules.
-2. Map values to existing semantic tokens.
-3. Add primitive tokens only when necessary.
-4. Add semantic tokens only when no existing role is appropriate.
-5. Run contrast checks.
-6. Review all Storyblok components and preview outputs.
-7. Do not hard-code the new palette directly into component files.
-8. Document intentional deviations.
-
-## Accessibility
-
-- normal text contrast: target WCAG AA;
-- focus states must be visibly distinct;
-- never communicate state by color alone;
-- decorative images use empty alt text;
-- meaningful image cards require useful alt text.
+- All text colors must achieve at least 4.5:1 contrast against their backgrounds (3:1 for large text).
+- Focus states must feature a visibly distinct focus ring (`:focus-visible`).
+- State must never be communicated by color alone.
+- Pure CSS interactivity (e.g. `<details>` / `<summary>`) must remain fully accessible via keyboard.
+- Images require meaningful `alt` attributes or empty `alt=""` for decorative assets.

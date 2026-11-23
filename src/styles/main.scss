@@ -84,3 +84,34 @@
     }
   }
 }
+
+// 404 page styling
+.not-found-page {
+  padding-block: var(--space-2xl, 3rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 auto;
+
+  .not-found-title {
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-block-end: var(--space-md);
+    color: var(--color-heading);
+  }
+
+  .not-found-text {
+    font-size: 1.15rem;
+    color: var(--color-body);
+    margin-block-end: var(--space-xl);
+  }
+
+  .not-found-link {
+    display: inline-flex;
+    text-decoration: none;
+  }
+}
+
